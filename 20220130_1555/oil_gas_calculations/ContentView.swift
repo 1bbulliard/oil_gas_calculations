@@ -31,12 +31,12 @@ struct ContentView: View {
            NavigationView{
                 List{
                    NavigationLink("Pressure Gradient - Using Mud Weight, ppg ", destination: nextview())
-                   NavigationLink("Pressure Gradient - Using Mud Weight, lb/ft³", destination: nextview2())
+                   NavigationLink("Pressure Gradient - Using Mud Weight, lb/ft3", destination: nextview2())
                    NavigationLink("Pressure Gradient - Using Mud Weight, specific gravity", destination: nextview3())
                     NavigationLink("Pressure Gradient bar/m - Using drill fluid density kg/l", destination: nextview4())
                     NavigationLink("Pressure Gradient bar/10m - Using drill fluid density kg/l", destination: nextview5())
-                    NavigationLink("S.i units calc - pressure gradient using drilling fluid density kg/m**³", destination: nextview6())
-                   NavigationLink("Convert pressure gradient, psi/ft to mud weight, ppg using pressure gradient, psi/ft", destination: nextview7())
+                    NavigationLink("S.i units calc - pressure gradient using drilling fluid density kg/m**3", destination: nextview6())
+                    NavigationLink("Convert pressure gradient, psi/ft to mud weight, ppg using pressure gradient, psi/ft", destination: nextview7())
                      }
                 }
             }
@@ -63,7 +63,7 @@ func psift(parm1: Double, parm2: Double) -> Double {
 struct nextview2: View {
     @State private var amt = ""
     var body: some View {
-        TextField("Enter mud weight/lb/ft³", text: $amt)
+        TextField("Enter mud weight/lb/ft3", text: $amt)
         .background(.green)
         let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
@@ -129,7 +129,7 @@ struct nextview6: View {
     //var amt = ""
     var body: some View {
         VStack{
-            TextField("Enter drilling fluid density kg/m³", text: $amt)
+            TextField("Enter drilling fluid density kg/m**3", text: $amt)
            .background(.green)
                         .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue

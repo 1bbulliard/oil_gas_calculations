@@ -37,6 +37,7 @@ struct ContentView: View {
                     NavigationLink("Pressure Gradient ", destination: PressureGradientView())
                     NavigationLink("Hydrostatic Pressure", destination: HydrostaticPressureView())
                     }
+                    .navigationBarHidden(true)
                }
                 }
             }
@@ -65,11 +66,9 @@ struct PressureGradientView: View {
         NavigationLink("Convert Drilling fluid density, kg/l using pressure gradient bar/m and bar/10m", destination: nextview8())
         NavigationLink("Convert Drilling fluid density, kg/m³", destination: nextview9())
                                         }
-                   
-
-                    
-          
+    
                }
+               .navigationBarHidden(true)
             }
             
   

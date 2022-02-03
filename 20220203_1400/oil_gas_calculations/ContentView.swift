@@ -20,10 +20,8 @@ struct ContentView: View {
         VStack {
             Image("oil_rig")
                 .resizable()
-               .frame(width: 320.0, height: 100.0, alignment: .center)
+            //    .frame(width: 250.0, height: 250.0, alignment: .center)
              //   .scaledToFit()
-               .ignoresSafeArea()
-            
             Divider()
             Text("Oil Gas Calculations")
                 .font(.largeTitle)
@@ -32,24 +30,6 @@ struct ContentView: View {
     
            
         NavigationView{
-                List{
-                    Group{
-                    NavigationLink("Pressure Gradient ", destination: PressureGradientView())
-                    NavigationLink("Hydrostatic Pressure", destination: HydrostaticPressureView())
-                    }
-               }
-                }
-            }
-    
-}
-}
-
-
-struct PressureGradientView: View {
-   
-    var body: some View {
-      VStack {
-            NavigationView{
                 List{
                     Group {
                         Text("Pressure Gradient")
@@ -65,7 +45,12 @@ struct PressureGradientView: View {
         NavigationLink("Convert Drilling fluid density, kg/l using pressure gradient bar/m and bar/10m", destination: nextview8())
         NavigationLink("Convert Drilling fluid density, kg/m³", destination: nextview9())
                                         }
-                   
+                    Group{
+                        Text("Hydrostatic pressure")
+                            .fontWeight(.semibold)
+                            .padding(.all, 15.0)
+                        NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview9())
+                    }
 
                     
           
@@ -79,23 +64,6 @@ struct PressureGradientView: View {
 }
 }
 
-struct HydrostaticPressureView: View {
-   // @State var navigated = true
-    var body: some View {
-      
-        VStack {
-        NavigationView{
-                List{
-                   Text("Hydrostatic pressure")
-                            .fontWeight(.semibold)
-                            .padding(.all, 15.0)
-                        NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview9())
-                    }
-               }
-                }
-            }
-    
-}
 struct nextview: View {
     @State private var amt = ""
     //var amt = ""
@@ -106,11 +74,7 @@ struct nextview: View {
                         .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift(parm1: amtx, parm2: 2))")
-        .background(.green)
-            
-        }
-        
-    }
+        .background(.green)}}
 }
 func psift(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -157,11 +121,7 @@ struct nextview4: View {
                         .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Pressure gradient, bar/m: \(metricgrad(parm1: amtx, parm2: 2))")
-        .background(.green)
-            
-        }
-        
-    }
+        .background(.green)}}
 }
 func metricgrad(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -178,10 +138,7 @@ struct nextview5: View {
                         .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
-        .background(.green)
-        }
-        
-    }
+        .background(.green)}}
 }
 func metricgrad2(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -198,11 +155,7 @@ struct nextview6: View {
                         .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("S.i.units calculation - pressure gradient, kPa/m \(siunits_calc(parm1: amtx, parm2: 2))")
-        .background(.green)
-            
-        }
-        
-    }
+        .background(.green)}}
 }
 func siunits_calc(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -223,11 +176,7 @@ struct nextview7: View {
         Text("lb/ft³/ mud weight: \(convtomud2(parm1: amtx, parm2: 2))")
                 .background(.green)
         Text("sg/ mud weight: \(convtomud3(parm1: amtx, parm2: 2))")
-        .background(.green)
-            
-        }
-        
-    }
+        .background(.green)}}
 }
 func convtomud(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -258,11 +207,7 @@ struct nextview8: View {
         Text("Drilling fluid Density, kg/l using bar/m:  \(drill_fluid_density(parm1: amtx, parm2: 2))")
             .background(.green)
     Text("Drilling fluid Density, kg/l using bar/10m:   \(drill_fluid_density2(parm1: amtx2, parm2: 2))")
-        .background(.green)
-            
-        }
-        
-    }
+        .background(.green)}}
 }
 
 func drill_fluid_density(parm1: Double, parm2: Double) -> Double {
@@ -284,11 +229,7 @@ struct nextview9: View {
                         .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Drilling Fluid density, kg/m₃ \(drill_fluid_density4(parm1: amtx, parm2: 2))")
-        .background(.green)
-            
-        }
-        
-    }
+        .background(.green)}}
 }
 func drill_fluid_density4(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0

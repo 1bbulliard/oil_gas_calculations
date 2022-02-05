@@ -93,7 +93,7 @@ struct HydrostaticPressureView: View {
                    Text("Hydrostatic pressure")
                             .fontWeight(.semibold)
                             .padding(.all, 15.0)
-                        NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt ", destination: nextview10())
+                        NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview10())
                     Spacer()
                     Spacer()
                     
@@ -110,9 +110,11 @@ struct nextview: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("enter mud wt ppg: ")
             TextField("Enter mud weight/ppg", text: $amt)
-           .background(.green)
-                        .keyboardType(.decimalPad)
+     //      .background(.green)
+      //     .keyboardType(.decimalPad)
+            .modifier(Modify1())
             let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift(parm1: amtx, parm2: 2))")
         .background(.green)
@@ -131,8 +133,10 @@ struct nextview2: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter mud weight/lb/ft³")
         TextField("Enter mud weight/lb/ft³", text: $amt)
-        .background(.green)
+       // .background(.green)
+                    .modifier(Modify1())
         let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
         .background(.green)
@@ -348,7 +352,10 @@ struct nextview10: View {
                .background(.green)
                 TextField("Enter mud wt(lb/ft 3)", text: $amt4)
                    .background(.green)
-          
+                TextField("Enter mud weight/ppg", text: $amt5)
+                   .background(.green)
+                TextField("Enter true vert depth (ft)", text: $amt6)
+                   .background(.green)
                 
             let amtx = (amt as NSString).doubleValue
             let amtx2 = (amt2 as NSString).doubleValue
@@ -386,6 +393,28 @@ func hd3(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
     total = parm1 * parm2 * 0.006944
         return total}
+
+struct Modify1: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(Color.green)
+            .keyboardType(.decimalPad)
+            .background(RoundedRectangle(cornerRadius: 28),
+                        alignment: .center)
+            
+    }
+    
+}
+/*
+extension View Modify1 {
+    func modify1() -> some view {
+        modifier(Modify1)
+    }
+}
+
+*/
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

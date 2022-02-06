@@ -114,7 +114,8 @@ struct nextview: View {
             TextField("Enter mud weight/ppg", text: $amt)
      //      .background(.green)
       //     .keyboardType(.decimalPad)
-            .modifier(Modify1())
+        //    .modifier(Modify1())
+            .modify1()
             let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift(parm1: amtx, parm2: 2))")
         .background(.green)
@@ -155,8 +156,10 @@ struct nextview3: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter mud weight/specific gravity:")
         TextField("Enter mud weight/specific gravity", text: $amt)
-        .background(.green)
+        //.background(.green)
+                    .modifier(Modify1())
         let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift3(parm1: amtx, parm2: 2))")
         .background(.green)
@@ -176,9 +179,11 @@ struct nextview4: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter Drilling fluid density kg/l")
             TextField("Enter drilling fluid density kg/l", text: $amt)
-           .background(.green)
-                        .keyboardType(.decimalPad)
+          // .background(.green)
+                    .modifier(Modify1())
+                     //   .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Pressure gradient, bar/m: \(metricgrad(parm1: amtx, parm2: 2))")
         .background(.green)
@@ -199,9 +204,11 @@ struct nextview5: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter drilling fluid density kg/l")
             TextField("Enter drilling fluid density kg/l", text: $amt)
-           .background(.green)
-                        .keyboardType(.decimalPad)
+                    .modifier(Modify1())
+        //   .background(.green)
+         //               .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
         .background(.green)
@@ -222,9 +229,11 @@ struct nextview6: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter drilling fluid density kg/m3")
             TextField("Enter drilling fluid density kg/m³", text: $amt)
-           .background(.green)
-                        .keyboardType(.decimalPad)
+                    .modifier(Modify1())
+        //   .background(.green)
+        //                .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("press grad, kPa/m \(siunits_calc(parm1: amtx, parm2: 2))")
         .background(.green)
@@ -245,9 +254,11 @@ struct nextview7: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter pressure gradient, psi/ft")
             TextField("Enter pressure gradient, psi/ft", text: $amt)
-           .background(.green)
-                        .keyboardType(.decimalPad)
+                    .modifier(Modify1())
+       //    .background(.green)
+       //                 .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("ppg/ mud weight: \(convtomud(parm1: amtx, parm2: 2))")
                 .background(.green)
@@ -281,10 +292,13 @@ struct nextview8: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter pressure Gradient, bar/m")
             TextField("Enter pressure gradient, bar/m", text: $amt)
                 .background(.green)
+                Text("Enter pressure gradient,bar/10m")
             TextField("Enter pressure gradient, bar/10m", text: $amt2)
-           .background(.green)
+                    .modifier(Modify1())
+         //  .background(.green)
              //           .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
             let amtx2 = (amt2 as NSString).doubleValue
@@ -313,8 +327,10 @@ struct nextview9: View {
     var body: some View {
         VStack{
             ScrollView{
+                Text("Enter pressure gradient,kPa/m")
             TextField("Enter pressure gradient, kPa/m", text: $amt)
-           .background(.green)
+                    .modifier(Modify1())
+     //      .background(.green)
             //            .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Drilling Fluid density, kg/m₃ \(drill_fluid_density4(parm1: amtx, parm2: 2))")
@@ -344,18 +360,34 @@ struct nextview10: View {
         
         VStack{
             ScrollView{
+                Group {
+                    
+             Text("Enter mud weight (ppg)")
             TextField("Enter mud weight(ppg)", text: $amt)
-                .background(.green)
+              
+                    Text("Enter true vert depth (ft)")
             TextField("Enter true vert depth (ft)", text: $amt2)
-           .background(.green)
-            TextField("Enter PSI/ft", text: $amt3)
-               .background(.green)
+                }
+                .modifier(Modify1())
+              
+                    Group {
+                        Text("Enter PSI/ft")
+                                    TextField("Enter PSI/ft", text: $amt3)
+
+                                       
+                Text("Enter mud wt(lb/ft 3")
                 TextField("Enter mud wt(lb/ft 3)", text: $amt4)
-                   .background(.green)
+                 
+                Text("Enter mud weight/ppg")
+               
+
+                    }
+
+                
+                .modifier(Modify1())
+                
                 TextField("Enter mud weight/ppg", text: $amt5)
-                   .background(.green)
-                TextField("Enter true vert depth (ft)", text: $amt6)
-                   .background(.green)
+
                 
             let amtx = (amt as NSString).doubleValue
             let amtx2 = (amt2 as NSString).doubleValue
@@ -398,21 +430,27 @@ struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(Color.green)
+            .background(RoundedRectangle(cornerRadius: 34))
+      //      .background(Color.green)
             .keyboardType(.decimalPad)
-            .background(RoundedRectangle(cornerRadius: 28),
-                        alignment: .center)
+            .padding(.horizontal,52)
+            .padding(.vertical,8)
+        
+      //      .onTapGesture {
+       //                 self.endEditing()
+           
             
     }
     
 }
-/*
-extension View Modify1 {
-    func modify1() -> some view {
-        modifier(Modify1)
+
+extension View {
+   func modify1() -> some View {
+       modifier(Modify1())
     }
 }
 
-*/
+
 
 
 struct ContentView_Previews: PreviewProvider {

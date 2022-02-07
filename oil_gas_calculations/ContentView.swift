@@ -33,16 +33,30 @@ struct ContentView: View {
            
         NavigationView{
                 List{
-                    Group{
-                    NavigationLink("Pressure Gradient ", destination: PressureGradientView())
-                    NavigationLink("Hydrostatic Pressure", destination: HydrostaticPressureView())
+                    ScrollView {
                         
+                    
+                    Group{
+
+                       
+                    NavigationLink("Pressure Gradient--> ", destination: PressureGradientView())
+                            
+                        Divider()
+                            .modify1()
+                     
+                    NavigationLink("Hydrostatic Pressure---->", destination: HydrostaticPressureView())
+                            .modify1()
+                     Divider()
                            
                     }
+                    .modify1()
                     .navigationBarHidden(true)
+                    }
+        
+                   
                     
-               }
-                
+                }
+
                 }
        
             }
@@ -57,22 +71,34 @@ struct PressureGradientView: View {
       VStack {
             NavigationView{
                 List{
-                    Group {
+                   
                         Text("Pressure Gradient")
                         .fontWeight(.semibold)
                         .padding(.all, 15.0)
+                        .modify1()
+                    Group {
         NavigationLink("Pressure Gradient - Using Mud Weight, ppg ", destination: nextview())
+                            .modify1()
         NavigationLink("Pressure Gradient - Using Mud Weight, lb/ft³", destination: nextview2())
+                            .modify1()
         NavigationLink("Pressure Gradient - Using Mud Weight, specific gravity", destination: nextview3())
+                            .modify1()
         NavigationLink("Pressure Gradient bar/m - Using drill fluid density kg/l", destination: nextview4())
+                            .modify1()
         NavigationLink("Pressure Gradient bar/10m - Using drill fluid density kg/l", destination: nextview5())
+                            .modify1()
         NavigationLink("S.i units calc - press grad using drill fluid dens kg/m**³", destination: nextview6())
+                            .modify1()
         NavigationLink("Convert press grad to mud wt(ppg, lb/ft,sg) using psi/ft", destination: nextview7())
+                            .modify1()
         NavigationLink("Convert Drill fluid dens, kg/l using pressure gradient bar/m and bar/10m", destination: nextview8())
+                            .modify1()
         NavigationLink("Convert Drilling fluid density, kg/m³", destination: nextview9())
-                                        }
-    Spacer()
-               }
+                            .modify1()
+                    }                        }
+                    .modify1()
+   // Spacer()
+               
                .navigationBarHidden(true)
             }
             
@@ -90,13 +116,17 @@ struct HydrostaticPressureView: View {
         VStack {
         NavigationView{
                 List{
+                    Group{
+                        
+                    
                    Text("Hydrostatic pressure")
                             .fontWeight(.semibold)
                             .padding(.all, 15.0)
                         NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview10())
                     Spacer()
                     Spacer()
-                    
+                    }
+                    .modify1()
                     }
                }
   //      .navigationBarHidden(true)
@@ -110,15 +140,18 @@ struct nextview: View {
     var body: some View {
         VStack{
             ScrollView{
+                Group{
+                    
+                
                 Text("enter mud wt ppg: ")
             TextField("Enter mud weight/ppg", text: $amt)
-     //      .background(.green)
-      //     .keyboardType(.decimalPad)
-        //    .modifier(Modify1())
+     
+                }
             .modify1()
+                Divider()
             let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift(parm1: amtx, parm2: 2))")
-        .background(.green)
+                    .modifier(Modify1())
          Spacer()
         }
         }
@@ -134,13 +167,18 @@ struct nextview2: View {
     var body: some View {
         VStack{
             ScrollView{
+                Group{
+                    
+               
                 Text("Enter mud weight/lb/ft³")
         TextField("Enter mud weight/lb/ft³", text: $amt)
-       // .background(.green)
+                Divider()
                     .modifier(Modify1())
         let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
-        .background(.green)
+                }
+
+                    .modifier(Modify1())
         Spacer()
     }
 }
@@ -156,13 +194,17 @@ struct nextview3: View {
     var body: some View {
         VStack{
             ScrollView{
+                Group{
+                    
+                
                 Text("Enter mud weight/specific gravity:")
         TextField("Enter mud weight/specific gravity", text: $amt)
-        //.background(.green)
+                Divider()
                     .modifier(Modify1())
         let amtx = (amt as NSString).doubleValue
         Text("PSI/ft: \(psift3(parm1: amtx, parm2: 2))")
-        .background(.green)
+                }
+                    .modifier(Modify1())
         Spacer()
     }
 }
@@ -179,14 +221,16 @@ struct nextview4: View {
     var body: some View {
         VStack{
             ScrollView{
+                Group{
                 Text("Enter Drilling fluid density kg/l")
             TextField("Enter drilling fluid density kg/l", text: $amt)
-          // .background(.green)
+                Divider()
                     .modifier(Modify1())
                      //   .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Pressure gradient, bar/m: \(metricgrad(parm1: amtx, parm2: 2))")
-        .background(.green)
+                }
+                    .modifier(Modify1())
           Spacer()
         }
         
@@ -204,14 +248,20 @@ struct nextview5: View {
     var body: some View {
         VStack{
             ScrollView{
+                Group{
+                    
+                
                 Text("Enter drilling fluid density kg/l")
             TextField("Enter drilling fluid density kg/l", text: $amt)
+                }
+
                     .modifier(Modify1())
+                Divider()
         //   .background(.green)
          //               .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
-        .background(.green)
+                    .modifier(Modify1())
             Spacer()
         }
         
@@ -232,11 +282,12 @@ struct nextview6: View {
                 Text("Enter drilling fluid density kg/m3")
             TextField("Enter drilling fluid density kg/m³", text: $amt)
                     .modifier(Modify1())
+                Divider()
         //   .background(.green)
         //                .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("press grad, kPa/m \(siunits_calc(parm1: amtx, parm2: 2))")
-        .background(.green)
+                    .modifier(Modify1())
          Spacer()
         }
         
@@ -255,17 +306,19 @@ struct nextview7: View {
         VStack{
             ScrollView{
                 Text("Enter pressure gradient, psi/ft")
+                Divider()
             TextField("Enter pressure gradient, psi/ft", text: $amt)
                     .modifier(Modify1())
        //    .background(.green)
        //                 .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
+                Divider()
         Text("ppg/ mud weight: \(convtomud(parm1: amtx, parm2: 2))")
-                .background(.green)
+                    .modifier(Modify1())
         Text("lb/ft³/ mud weight: \(convtomud2(parm1: amtx, parm2: 2))")
-                .background(.green)
+                    .modifier(Modify1())
         Text("sg/ mud weight: \(convtomud3(parm1: amtx, parm2: 2))")
-        .background(.green)
+                    .modifier(Modify1())
          Spacer()
         }
         
@@ -292,20 +345,30 @@ struct nextview8: View {
     var body: some View {
         VStack{
             ScrollView{
+                Group{
+                    Divider()
                 Text("Enter pressure Gradient, bar/m")
             TextField("Enter pressure gradient, bar/m", text: $amt)
-                .background(.green)
+           Divider()
                 Text("Enter pressure gradient,bar/10m")
             TextField("Enter pressure gradient, bar/10m", text: $amt2)
+                }
                     .modifier(Modify1())
-         //  .background(.green)
-             //           .keyboardType(.decimalPad)
+      
             let amtx = (amt as NSString).doubleValue
             let amtx2 = (amt2 as NSString).doubleValue
+                Group{
+                    
+                
+                Divider()
         Text("Drill Dens, kg/l using bar/m:  \(drill_fluid_density(parm1: amtx, parm2: 2))")
-            .background(.green)
+                
+                Divider()
     Text("Drill fluid Dens, kg/l using bar/10m:   \(drill_fluid_density2(parm1: amtx2, parm2: 2))")
-        .background(.green)
+                   
+                }
+                .modifier(Modify1())
+                Divider()
           Spacer()
         }
         Spacer()
@@ -334,7 +397,7 @@ struct nextview9: View {
             //            .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Drilling Fluid density, kg/m₃ \(drill_fluid_density4(parm1: amtx, parm2: 2))")
-        .background(.green)
+                    .modifier(Modify1())
           Spacer()
         }
         Spacer()
@@ -360,57 +423,46 @@ struct nextview10: View {
         
         VStack{
             ScrollView{
-                Group {
-                    
-             Text("Enter mud weight (ppg)")
+        Group {
+            Divider()
+            Text("Enter mud weight (ppg)")
             TextField("Enter mud weight(ppg)", text: $amt)
-              
-                    Text("Enter true vert depth (ft)")
+             Divider()
+            Text("Enter true vert depth (ft)")
             TextField("Enter true vert depth (ft)", text: $amt2)
+            Divider()
                 }
                 .modifier(Modify1())
               
-                    Group {
-                        Text("Enter PSI/ft")
-                                    TextField("Enter PSI/ft", text: $amt3)
-
+            Group {
+                Text("Enter PSI/ft")
+                TextField("Enter PSI/ft", text: $amt3)
+                Divider()
                                        
                 Text("Enter mud wt(lb/ft 3")
                 TextField("Enter mud wt(lb/ft 3)", text: $amt4)
-                 
-                Text("Enter mud weight/ppg")
-               
-
-                    }
-
+                Divider()
+                 }
+                 .modifier(Modify1())
                 
-                .modifier(Modify1())
-                
-                TextField("Enter mud weight/ppg", text: $amt5)
-
-                
-            let amtx = (amt as NSString).doubleValue
-            let amtx2 = (amt2 as NSString).doubleValue
+                let amtx = (amt as NSString).doubleValue
+                let amtx2 = (amt2 as NSString).doubleValue
                 let amtx3 = (amt3 as NSString).doubleValue
                 let amtx4 = (amt4 as NSString).doubleValue
                 
-                
-                
-                
-        Text("Hydrostat press/psi(using ppg)  \(hd1(parm1: amtx, parm2: amtx2))")
-            .background(.green)
-        Text("Hydrostat press/psi(using psi/ft  \(hd2(parm1: amtx3, parm2: amtx2))")
-                    .background(.green)
-        Text("Hydrostat press/psi(using mud wt lb/ft3  \(hd3(parm1: amtx4, parm2: amtx2))")
-                            .background(.green)
+        Text("Hydrostat press/psi(using ppg):  \(hd1(parm1: amtx, parm2: amtx2))")
+                    .modifier(Modify1())
+        Text("Hydrostat press/psi(using psi/ft:  \(hd2(parm1: amtx3, parm2: amtx2))")
+                    .modifier(Modify1())
+        Text("Hydrostat press/psi(using mud wt lb/ft3:  \(hd3(parm1: amtx4, parm2: amtx2))")
+                    .modifier(Modify1())
        
                               
      //     Spacer()
-          
+                    }
+                                                      }
          
-        }
         
-    }
 }
 }
 func hd1(parm1: Double, parm2: Double) -> Double {
@@ -429,15 +481,20 @@ func hd3(parm1: Double, parm2: Double) -> Double {
 struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .background(Color.green)
-            .background(RoundedRectangle(cornerRadius: 34))
+            .foregroundColor(Color.black)
+            .background(Color.teal.cornerRadius(10))
+            .background(RoundedRectangle(cornerRadius: 14))
       //      .background(Color.green)
             .keyboardType(.decimalPad)
-            .padding(.horizontal,52)
-            .padding(.vertical,8)
-        
+            .padding(.horizontal,22)
+            .padding(.vertical,1)
+     //       .frame(width:300, height: 15, alignment: .leading)
       //      .onTapGesture {
-       //                 self.endEditing()
+      //          self.endEditing()}
+       //     .onTapGesture {
+       //         self.}
+         //   .onTapGesture {
+         //               self.endEditing()
            
             
     }
@@ -456,6 +513,8 @@ extension View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-      //  nextview6()
+     //  HydrostaticPressureView()
+      //  PressureGradientView()
+     //  nextview()
      }
 }

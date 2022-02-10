@@ -40,15 +40,22 @@ struct ContentView: View {
 
                        
                     NavigationLink("Pressure Gradient--> ", destination: PressureGradientView())
-                            
-                        Divider()
+                  //          .frame(width: 255.0, height: 150.0, alignment: .center)
                             .modify1()
+                        Divider()
+                            
                      
                     NavigationLink("Hydrostatic Pressure---->", destination: HydrostaticPressureView())
                             .modify1()
                      Divider()
-                           
+                        NavigationLink("Convert Drilling pressure into mud weight-->", destination: nextview12())
+                        Divider()
+                        NavigationLink("Convert Specific Gravity-->", destination: nextview13())
+                        Divider()
+                        NavigationLink("Equivalent Circulating Density, ppg-->", destination: nextview14())
+                        Divider()
                     }
+                        
                     .modify1()
                     .navigationBarHidden(true)
                     }
@@ -95,6 +102,8 @@ struct PressureGradientView: View {
                             .modify1()
         NavigationLink("Convert Drilling fluid density, kg/m³", destination: nextview9())
                             .modify1()
+                            
+                //            .frame(width: 233, height: 3, alignment: .leading)
                     }                        }
                     .modify1()
    // Spacer()
@@ -125,6 +134,7 @@ struct HydrostaticPressureView: View {
                         NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview10())
                         Divider()
                         NavigationLink("Convert to Hydrostatic Pressure using 1.Metric (hydrostatic pressure, bar and 2. S.I. Calculation (hydrostatic pressure kPa)", destination: nextview11())
+                       
                     Spacer()
                     Spacer()
                     }
@@ -308,6 +318,7 @@ struct nextview7: View {
         VStack  {
             ScrollView{
                 Text("Enter pressure gradient, psi/ft")
+                    .modify1()
                 Divider()
             TextField("Enter pressure gradient, psi/ft", text: $amt)
                     .modify1()
@@ -393,13 +404,14 @@ struct nextview9: View {
         VStack  {
             ScrollView{
                 Text("Enter pressure gradient,kPa/m")
+                    .modify1()
             TextField("Enter pressure gradient, kPa/m", text: $amt)
                     .modify1()
      //      .background(.green)
             //            .keyboardType(.decimalPad)
             let amtx = (amt as NSString).doubleValue
         Text("Drilling Fluid density, kg/m₃ \(drill_fluid_density4(parm1: amtx, parm2: 2))")
-                    .modifier(Modify1())
+                    .modify1()
           Spacer()
         }
         Spacer()
@@ -419,11 +431,12 @@ struct nextview10: View {
     @State private var amt5 = ""
     @State private var amt6 = ""
     @State private var amt7 = ""
-    
+  //  @FocusState private var amountisfocused: Bool
     //var amt = ""
     var body: some View {
         
         VStack  {
+            
             ScrollView{
         Group {
             Divider()
@@ -432,34 +445,48 @@ struct nextview10: View {
              Divider()
             Text("Enter true vert depth (ft)")
             TextField("Enter true vert depth (ft)", text: $amt2)
+            
             Divider()
                 }
         .modify1()
-              
+        
             Group {
                 Text("Enter PSI/ft")
+                    .modify1()
                 TextField("Enter PSI/ft", text: $amt3)
+                .modify1()
                 Divider()
-                                       
+                
+                
                 Text("Enter mud wt(lb/ft 3")
+                    .modify1()
                 TextField("Enter mud wt(lb/ft 3)", text: $amt4)
+               .modify1()
                 Divider()
+                Text("Enter true vertical depth, meters:")
+                    .modify1()
+                TextField("Enter true vertical depth, meters:", text: $amt5)
+               .modify2()
+                Divider()
+                
                  }
-                 .modifier(Modify1())
+                 
                 
                 let amtx = (amt as NSString).doubleValue
                 let amtx2 = (amt2 as NSString).doubleValue
                 let amtx3 = (amt3 as NSString).doubleValue
                 let amtx4 = (amt4 as NSString).doubleValue
+                let amtx5 = (amt5 as NSString).doubleValue
                 
         Text("Hydrostat press/psi(using ppg):  \(hd1(parm1: amtx, parm2: amtx2))")
-                    .modifier(Modify1())
+                    .modify1()
         Text("Hydrostat press/psi(using psi/ft:  \(hd2(parm1: amtx3, parm2: amtx2))")
-                    .modifier(Modify1())
+                    .modify1()
         Text("Hydrostat press/psi(using mud wt lb/ft3:  \(hd3(parm1: amtx4, parm2: amtx2))")
-                    .modifier(Modify1())
-       
-                              
+                    .modify1()
+        Text("Hydrostat press, psi, using meters as depth  \(hd4(parm1: amtx, parm2: amtx5))")
+                            .modify1()
+                    
      //     Spacer()
                     }
                                                       }
@@ -479,6 +506,10 @@ func hd3(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
     total = parm1 * parm2 * 0.006944
         return total}
+func hd4(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = parm1 * 0.052 * parm2 * 3.281
+        return total}
 
 struct nextview11: View {
     @State private var amt = ""
@@ -490,16 +521,24 @@ struct nextview11: View {
             ScrollView{
                 Group{
                     Divider()
-                Text("Enter Drilling Fluid Density,kg/l:")
+            Text("Enter Drilling Fluid Density,kg/l:")
+                        .modify1()
             TextField("Enter Drilling Fluid Density,kg/l", text: $amt)
+            .modify1()
            Divider()
-                Text("Enter Drilling Fluid Density,kg/m**3:")
+                    
+            Text("Enter Drilling Fluid Density,kg/m**3:")
+                        .modify1()
             TextField("Enter pressure gradient, bar/10m", text: $amt2)
-                    Divider()
-                         Text("Enter true vertical depth:")
-                     TextField("Enter true vertical depth:", text: $amt3)
+            .modify1()
+            Divider()
+                    
+            Text("Enter true vertical depth:")
+                        .modify1()
+            TextField("Enter true vertical depth(meters):", text: $amt3)
+            .modify2()
                 }
-                .modify1()
+              //  .modify1()
       
             let amtx = (amt as NSString).doubleValue
             let amtx2 = (amt2 as NSString).doubleValue
@@ -532,6 +571,319 @@ func h_pressure_kpa(parm1: Double, parm2: Double) -> Double {
     total = (parm1 / 102) * parm2
         return total}
 
+//
+// Convert drilling pressure into mud weight
+//
+struct nextview12: View {
+    @State private var amt = ""
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    @State private var amt4 = ""
+    @State private var amt5 = ""
+    @State private var amt6 = ""
+    @State private var amt7 = ""
+  //  @FocusState private var amountisfocused: Bool
+    //var amt = ""
+    var body: some View {
+        
+        VStack  {
+            
+            ScrollView{
+        Group {
+                Divider()
+                Text("Enter pressure(PSI)")
+                TextField("Enter pressure(PSI)", text: $amt)
+                Divider()
+                
+                Text("Enter true vert depth (ft)")
+                TextField("Enter true vert depth (ft)", text: $amt2)
+                
+                Text("Enter true vertical depth (meters):")
+                TextField("Enter true vertical depth (meters)", text: $amt3)
+                Divider()
+                    }
+            .modify1()
+        
+        Group {
+                Text("Enter pressure bar:")
+                .modify1()
+                TextField("Enter pressure bar:", text: $amt4)
+                .modify1()
+                Divider()
+               
+                Text("Enter pressure  kPa")
+                .modify1()
+                TextField("Enter pressure kPas", text: $amt5)
+                .modify2()
+                Divider()
+                }
+            
+                
+                let amtx = (amt as NSString).doubleValue
+                let amtx2 = (amt2 as NSString).doubleValue
+                let amtx3 = (amt3 as NSString).doubleValue
+                let amtx4 = (amt4 as NSString).doubleValue
+                let amtx5 = (amt5 as NSString).doubleValue
+                
+        Text("Mud Weight PPG (using feet):  \(mw1(parm1: amtx, parm2: amtx2))")
+                    .modify1()
+        Text("Mud Weight PPG (using meters):  \(mw2(parm1: amtx, parm2: amtx3))")
+                    .modify1()
+        Text("Equivalent drilling fluid density, kg/l  \(eq1(parm1: amtx4, parm2: amtx3))")
+                    .modify1()
+        Text("Equivalent drilling fluid density, kg/m**3  \(eq2(parm1: amtx5, parm2: amtx3))")
+                            .modify1()
+                    
+     //     Spacer()
+                    }
+                                                      }
+         
+        
+}
+}
+func mw1(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 / parm2) / 0.052
+        return total}
+func mw2(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = ((parm1 / 0.052) / parm2) / 3.281
+        return total}
+func eq1(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 / 0.0981) / parm2
+        return total}
+func eq2(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 * 102) / parm2
+        return total}
+
+
+//
+// Convert Specific Gravity
+//
+struct nextview13: View {
+    @State private var amt = ""
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    @State private var amt4 = ""
+    @State private var amt5 = ""
+    @State private var amt6 = ""
+    @State private var amt7 = ""
+
+
+    var body: some View {
+        
+        VStack  {
+            
+            ScrollView{
+        Group {
+                Divider()
+                Text("Enter mud wt (ppg)")
+                TextField("Enter mud wt (ppg)", text: $amt)
+                Divider()
+                
+                Text("Enter Pressure Gradient (psi/ft)")
+                TextField("Enter Pressure Gradient (psi/ft)", text: $amt2)
+                
+                Text("Enter mud weight, lb/ft**3")
+                TextField("Enter mud weight, lb/ft**3", text: $amt3)
+                Divider()
+                    }
+            .modify1()
+        
+        Group {
+                Text("Enter specific gravity:")
+                .modify1()
+                TextField("Enter specific gravity:", text: $amt4)
+                .modify2()
+                Divider()
+               
+     //           Text("Enter pressure  kPa")
+     //           .modify1()
+     //           TextField("Enter pressure kPas", text: $amt5)
+      //          .modify2()
+     //           Divider()
+                }
+            
+                
+                let amtx = (amt as NSString).doubleValue
+                let amtx2 = (amt2 as NSString).doubleValue
+                let amtx3 = (amt3 as NSString).doubleValue
+                let amtx4 = (amt4 as NSString).doubleValue
+           //     let amtx5 = (amt5 as NSString).doubleValue
+                
+        Text("Specific gravity using mud weight, ppg:  \(sp1(parm1: amtx, parm2: amtx2))")
+                    .modify1()
+        Text("Specific gravity using pressure grad, psi/ft: \(sp2(parm1: amtx2, parm2: amtx3))")
+                    .modify1()
+        Text("Specific gravity using mud wt, lb/ft**3:  \(sp3(parm1: amtx3, parm2: amtx3))")
+                    .modify1()
+        Text("Mud weight, ppg using specific gravity: \(sp4(parm1: amtx4, parm2: amtx3))")
+                            .modify1()
+                Text("Pressure gradiebnt, psi/ft using specific gravity:  \(sp5(parm1: amtx4, parm2: amtx3))")
+                                    .modify1()
+                Text("mud weight using spec gravity:  \(sp6(parm1: amtx4, parm2: amtx3))")
+                                    .modify1()
+                    
+     //     Spacer()
+                    }
+                                                      }
+         
+        
+}
+}
+func sp1(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 / 8.33)
+        return total}
+func sp2(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 / 0.433)
+        return total}
+func sp3(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 / 62.4)
+        return total}
+func sp4(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 * 8.33)
+        return total}
+func sp5(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 * 0.433)
+        return total}
+func sp6(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 * 62.4)
+        return total}
+
+//
+// Convert Specific Gravity
+//
+struct nextview14: View {
+    @State private var amt = ""
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    @State private var amt4 = ""
+    @State private var amt5 = ""
+    @State private var amt6 = ""
+    @State private var amt7 = ""
+    @State private var amt8 = ""
+    @State private var amt9 = ""
+    @State private var amt10 = ""
+
+
+
+    var body: some View {
+        
+        VStack  {
+            
+            ScrollView{
+        Group {
+                Divider()
+                Text("Enter Annular pressure loss, psi")
+                TextField("Enter Annular pressure loss, psi", text: $amt)
+                Divider()
+                
+                Text("Enter true vertical depth, ft:")
+                TextField("Enter true vertical depth, ft:", text: $amt2)
+                
+                Text("Enter mud weight, ppg")
+                TextField("Enter mud weight, ppg", text: $amt3)
+                Divider()
+                    }
+            .modify1()
+        
+        Group {
+                Text("Enter annualar pressure loss, bar")
+                TextField("Enter annual pressure loss, bar", text: $amt4)
+                Divider()
+               
+               Text("Enter Total vertical depth (meters): ")
+               TextField("Enter total vertical depth (meters): ", text: $amt5)
+            
+               Divider()
+               Text("Enter mud weight, kg/l ")
+               TextField("Enter mud weight, kg/l ", text: $amt6)
+               Divider()
+          }
+        .modify1()
+        Group {
+           Text("Enter Annular pressure loss, kPa: ")
+            .modify1()
+           TextField("Enter Annular pressure loss, kPa: ", text: $amt7)
+            .modify1()
+           Divider()
+            
+           Text("Enter mud density, kg/m: ")
+            .modify1()
+           TextField("Enter mud density,kg/m: ", text: $amt8)
+          .modify1()
+            Divider()
+            
+                }
+                
+                Group {
+                   Text("Enter Leak off pressure, psi: ")
+                    .modify1()
+                   TextField("Enter leak off pressure, psi: ", text: $amt9)
+                    .modify1()
+                   Divider()
+                    
+                   Text("Enter Casing shoe total vertical depth, ft ")
+                    .modify1()
+                   TextField("Enter Casing shoe total vertical depth, ft  ", text: $amt10)
+                  .modify2()
+                    Divider()
+                    
+                        }
+            
+                
+                let amtx = (amt as NSString).doubleValue
+                let amtx2 = (amt2 as NSString).doubleValue
+                let amtx3 = (amt3 as NSString).doubleValue
+                let amtx4 = (amt4 as NSString).doubleValue
+                let amtx5 = (amt5 as NSString).doubleValue
+                let amtx6 = (amt6 as NSString).doubleValue
+                let amtx7 = (amt7 as NSString).doubleValue
+                let amtx8 = (amt8 as NSString).doubleValue
+                let amtx9 = (amt9 as NSString).doubleValue
+                let amtx10 = (amt10 as NSString).doubleValue
+                
+        Text("Equivalent Circulating Density, ppg:   \(ecd1(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .modify1()
+        Text("Equivalent Drilling Density,m kg/l \(ecd2(parm1: amtx4, parm2: amtx5, parm3: amtx6))")
+                    .modify1()
+        Text("Equivalent circulating Density:  \(ecd3(parm1: amtx7, parm2: amtx8, parm3: amtx5))")
+                    .modify1()
+        Text("Maximum allowable mud weight from leak off test \(ecd4(parm1: amtx9, parm2: amtx10, parm3: amtx3))")
+                            .modify1()
+          
+                    
+     //     Spacer()
+                    }
+                                                      }
+         
+        
+}
+}
+func ecd1(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total = ((parm1 / 0.052) / parm2) + parm3
+        return total}
+func ecd2(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total = (((parm1 / 0.0981)) / parm2) + parm3
+        return total}
+func ecd3(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total = (((parm1 * 102) / parm3)) + parm2
+        return total}
+func ecd4(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total = (((parm1 / 0.052) / parm2) + parm3)
+        return total}
 
 
 
@@ -539,17 +891,19 @@ func h_pressure_kpa(parm1: Double, parm2: Double) -> Double {
 struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
+          //  .frame(width:250, height: 22, alignment: .leading)
+          //  .font(.system(size: 12))
+            .font(.system(size: 18))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))
             .background(RoundedRectangle(cornerRadius: 14))
       //      .background(Color.green)
             .keyboardType(.decimalPad)
-            .padding(.horizontal,8)
-            .padding(.vertical,12)
+            .padding(.horizontal,22)
+            .padding(.vertical,1)
             
-     //       .frame(width:300, height: 15, alignment: .leading)
-      //      .onTapGesture {
-      //          self.endEditing()}
+            
+        //    .onTapGesture {self.body(content: KeyboardShortcut)}
        //     .onTapGesture {
        //         self.}
          //   .onTapGesture {
@@ -565,15 +919,46 @@ extension View {
        modifier(Modify1())
     }
 }
+struct Modify2: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+          //  .frame(width:250, height: 22, alignment: .leading)
+            .font(.system(size: 18))
+            .foregroundColor(Color.black)
+            .background(Color.teal.cornerRadius(10))
+            .background(RoundedRectangle(cornerRadius: 14))
+      //      .background(Color.green)
+        //    .keyboardType(.decimalPad)
+         //   .padding(.horizontal,20)
+            .padding(.horizontal,20)
+            .padding(.vertical,1)
+            
+            
+        //    .onTapGesture {self.body(content: KeyboardShortcut)}
+       //     .onTapGesture {
+       //         self.}
+         //   .onTapGesture {
+         //               self.endEditing()
+           
+            
+    }
+    
+}
+
+extension View {
+   func modify2() -> some View {
+       modifier(Modify2())
+    }
+}
 
 
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-      //  ContentView()
+        ContentView()
       // HydrostaticPressureView()
-        PressureGradientView()
-    nextview3()
+      //  PressureGradientView()
+    nextview10()
      }
 }

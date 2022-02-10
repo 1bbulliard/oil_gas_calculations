@@ -43,16 +43,17 @@ struct ContentView: View {
                   //          .frame(width: 255.0, height: 150.0, alignment: .center)
                             .modify1()
                         Divider()
-                            
-                     
                     NavigationLink("Hydrostatic Pressure---->", destination: HydrostaticPressureView())
                             .modify1()
                      Divider()
+                    }
+                        Group {
                         NavigationLink("Convert Drilling pressure into mud weight-->", destination: nextview12())
                         Divider()
                         NavigationLink("Convert Specific Gravity-->", destination: nextview13())
                         Divider()
                         NavigationLink("Equivalent Circulating Density, ppg-->", destination: nextview14())
+                        NavigationLink("Pump output-->", destination: pumpoutput())
                         Divider()
                     }
                         
@@ -146,6 +147,36 @@ struct HydrostaticPressureView: View {
             }
     
 }
+
+struct pumpoutput: View {
+   // @State var navigated = true
+    var body: some View {
+      
+        VStack {
+        NavigationView{
+                List{
+                    Group{
+                        
+                    
+                   Text("Pump Output:")
+                            .fontWeight(.semibold)
+                            .padding(.all, 15.0)
+                        NavigationLink("Pump output (Triplex Pump): ", destination: triplex_pumpview())
+                        Divider()
+                        
+                       
+                    Spacer()
+                    Spacer()
+                    }
+                    .modify1()
+                    }
+               }
+  //      .navigationBarHidden(true)
+                }
+            }
+    
+}
+
 struct nextview: View {
     @State private var amt = ""
     //var amt = ""
@@ -885,6 +916,85 @@ func ecd4(parm1: Double, parm2: Double, parm3: Double) -> Double {
     total = (((parm1 / 0.052) / parm2) + parm3)
         return total}
 
+struct triplex_pumpview: View {
+//    struct nextview14: View {
+
+
+    @State private var amt = ""
+        @State private var amt2 = ""
+        @State private var amt3 = ""
+        @State private var amt4 = ""
+        @State private var amt5 = ""
+        @State private var amt6 = ""
+        @State private var amt7 = ""
+        @State private var amt8 = ""
+        @State private var amt9 = ""
+        @State private var amt10 = ""
+
+    var body: some View {
+        
+        VStack  {
+            
+            ScrollView{
+        Group {
+                
+            Text("Triplex Pump:")
+            Divider()
+     
+            
+                Text("Enter liner diameter,inches:")
+                .modify1()
+                TextField("Enter liner diameter,in:", text: $amt)
+                .modify1()
+                Divider()
+              
+
+                Text("Enter stroke length, inches")
+                .modify1()
+                TextField("Enter true vertical depth, ft:", text: $amt2)
+                .modify1()
+
+                Text("Enter strokes per minute:")
+                .modify1()
+                TextField("Enter strokes per minute:", text: $amt3)
+                .modify2()
+
+                Divider()
+                    }
+            
+
+                let amtx = (amt as NSString).doubleValue
+                let amtx2 = (amt2 as NSString).doubleValue
+                let amtx3 = (amt3 as NSString).doubleValue
+            
+               
+        Text("Formula 1: Pump output, bbl/stk:  \(tpf1(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .modify1()
+        let amtx4 = 0.95 * tpf1(parm1: amtx, parm2: amtx2, parm3: amtx3)
+        Text("Formula 1: Pump output, bbl/stk(95%):  \(amtx4)")
+                            .modify1()
+        Text("Formula 2: Pump output, gpm \(tpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .modify1()
+        
+                            .modify1()
+          
+                    
+     //     Spacer()
+                    }
+                                                      }
+         
+        
+}
+}
+func tpf1(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total = pow(parm1,2) * 0.000243 *  parm2
+        return total}
+func tpf2(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total = (((3 * (pow(parm1,2)) * 0.7854) * parm2) * 0.00411 * parm3)
+        return total}
+
 
 
 
@@ -959,6 +1069,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
       // HydrostaticPressureView()
       //  PressureGradientView()
-    nextview10()
+    //nextview10()
      }
 }

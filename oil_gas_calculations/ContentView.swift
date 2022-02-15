@@ -162,7 +162,9 @@ struct pumpoutput: View {
                             .fontWeight(.semibold)
                             .padding(.all, 15.0)
                         NavigationLink("Pump output (Triplex Pump): ", destination: triplex_pumpview())
+                        NavigationLink("Pump output (Duplex Pump): ", destination: duplex_pumpview())
                         Divider()
+                        
                         
                        
                     Spacer()
@@ -471,6 +473,7 @@ struct nextview10: View {
             ScrollView{
         Group {
             Divider()
+            Text("Hydrostatic Pressure:")
             Text("Enter mud weight (ppg)")
             TextField("Enter mud weight(ppg)", text: $amt)
              Divider()
@@ -552,6 +555,7 @@ struct nextview11: View {
             ScrollView{
                 Group{
                     Divider()
+                    Text("Hydrostatic pressure using 1). Metric 2). S.I Calc:")
             Text("Enter Drilling Fluid Density,kg/l:")
                         .modify1()
             TextField("Enter Drilling Fluid Density,kg/l", text: $amt)
@@ -622,6 +626,7 @@ struct nextview12: View {
             ScrollView{
         Group {
                 Divider()
+            Text("Convert Drilling Pressure to Mud Weight:")
                 Text("Enter pressure(PSI)")
                 TextField("Enter pressure(PSI)", text: $amt)
                 Divider()
@@ -710,6 +715,7 @@ struct nextview13: View {
             ScrollView{
         Group {
                 Divider()
+            Text("Convert Specific Gravity:")
                 Text("Enter mud wt (ppg)")
                 TextField("Enter mud wt (ppg)", text: $amt)
                 Divider()
@@ -813,6 +819,7 @@ struct nextview14: View {
             ScrollView{
         Group {
                 Divider()
+                Text("Equivalent Circulating Density, PPG:")
                 Text("Enter Annular pressure loss, psi")
                 TextField("Enter Annular pressure loss, psi", text: $amt)
                 Divider()
@@ -996,12 +1003,114 @@ func tpf2(parm1: Double, parm2: Double, parm3: Double) -> Double {
         return total}
 
 
+struct duplex_pumpview: View {
+//    struct nextview14: View {
 
+
+    @State private var amt = ""
+        @State private var amt2 = ""
+        @State private var amt3 = ""
+        @State private var amt4 = ""
+        @State private var amt5 = ""
+        @State private var amt6 = ""
+        @State private var amt7 = ""
+        @State private var amt8 = ""
+        @State private var amt9 = ""
+        @State private var amt10 = ""
+
+    var body: some View {
+        
+        VStack  {
+            
+            ScrollView{
+        Group {
+                
+            Text("Duplex Pump:")
+            
+            Divider()
+            Text("Enter stroke length, inches")
+            .modify1()
+            TextField("Enter stroke length, inches:", text: $amt)
+            .modify1()
+            
+                Text("Enter liner diameter,inches:")
+                .modify1()
+                TextField("Enter liner diameter,in:", text: $amt2)
+                .modify1()
+                Divider()
+        }
+                Group {
+
+                
+
+                Text("Enter  rod diameter, inches:")
+                .modify1()
+                TextField("Enter  rod diameter, inches", text: $amt3)
+                .modify1()
+            
+            Text("Enter liters / minute:")
+            .modify1()
+            TextField("Enter liters/minute:", text: $amt6)
+            .modify2()
+
+                    Text("Enter pump speed, spm:")
+                    .modify1()
+                    TextField("Enter pump speed, spm:", text: $amt7)
+                    .modify2()
+                Divider()
+                    }
+            
+
+                let amtx = (amt as NSString).doubleValue
+                let amtx2 = (amt2 as NSString).doubleValue
+                let amtx3 = (amt3 as NSString).doubleValue
+                let amtx6 = (amt6 as NSString).doubleValue
+                let amtx7 = (amt7 as NSString).doubleValue
+               
+        Text("Formula 1: Pump output, bbl/stk:  \(dpf1(parm2: amtx2, parm1: amtx, parm3: amtx3))")
+                    .modify1()
+        let amtx4 = 0.85 * dpf1(parm2: amtx2, parm1: amtx, parm3: amtx3)
+        Text("Formula 1: Pump output, bbl/stk(85%):  \(amtx4)")
+                            .modify1()
+        Text("Formula 2: Pump output, bbl/stk \(dpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .modify1()
+        let amtx5 = 0.85 * (dpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))
+         Text ("Formula 2: adjust pump output for 85% efficiancy: \(amtx5)")
+                    .modify1()
+                
+                Text("Pump output (liters/minute): \(dpf3(parm1: amtx6, parm2: amtx7, parm3: amtx3))")
+                            .modify1()
+                    
+     //     Spacer()
+                    }
+                                                      }
+         
+        
+}
+}
+func dpf1(parm2: Double, parm1: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    var total2: Double = 0
+    var total3: Double = 0
+    
+    total = 0.000324 * pow(parm2,2) *  parm1
+    total2 = -0.000162 * (pow(parm3,2) * parm1)
+    total3 = total + total2
+        return total3}
+
+func dpf2(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total = 0.000162 * parm1 * (2 * (pow(parm2,2 )) - (pow(parm3,2)))
+        return total}
+func dpf3(parm1: Double, parm2: Double, parm3: Double) -> Double {
+        var total: Double = 0
+    total =  parm1 * parm2
+        return total}
 
 struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
-          //  .frame(width:250, height: 22, alignment: .leading)
+            //frame(width:250, height: 22, alignment: .leading)
           //  .font(.system(size: 12))
             .font(.system(size: 18))
             .foregroundColor(Color.black)

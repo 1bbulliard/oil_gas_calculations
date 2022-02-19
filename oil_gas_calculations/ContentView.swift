@@ -1168,6 +1168,10 @@ struct annular_velocity: View {
     @State private var amt13 = ""
     @State private var amt14 = ""
     @State private var amt15 = ""
+    @State private var amt16 = ""
+    @State private var amt17 = ""
+    @State private var amt18 = ""
+   // @State private var amtx: Double
     var body: some View {
         
         VStack  {
@@ -1179,6 +1183,7 @@ struct annular_velocity: View {
         
                 .modify3()
             Text("Input for formula 1:")
+                .modify3()
             Divider()
             Text("Enter pump output, bbl/min:")
         
@@ -1191,14 +1196,16 @@ struct annular_velocity: View {
                 TextField("Enter annual capacity, bbl/ft:", text: $amt5)
                 .modify1()
                 Divider()
+            let amtx3 = (amt3 as NSString).doubleValue
+            let amtx4 = (amt4 as NSString).doubleValue
+            let amtx5 = (amt5 as NSString).doubleValue
+            Text("Formula 1: annular velocity, ft/min:  \(av1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .modify1()
         }
-     
-            
-        
-        
-                Group {
+     Group {
                     Divider()
                 Text("Input for formula 2:")
+             .modify3()
                     Divider()
                 Text("Enter  circulation rate, gpm:")
            //     .modify1()
@@ -1215,9 +1222,16 @@ struct annular_velocity: View {
              //       .modify1()
                     TextField("Enter outside diameter of pipe, tubing or collars, in.:", text: $amt3)
                     .modify1()
-                //    Divider()
+                    let amtx = (amt as NSString).doubleValue
+                    let amtx2 = (amt2 as NSString).doubleValue
+                    let amtx3 = (amt3 as NSString).doubleValue
+                    Text("Formula 2: AV ft/min: \(av2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                                .modify1()
+                    
+                    
                     Divider()
                     Text("Input for formula 3:")
+                        .modify3()
                     Divider()
                     Text("Enter PO, bbl/min")
              //       .modify1()
@@ -1233,11 +1247,18 @@ struct annular_velocity: View {
                 //    .modify1()
                     TextField("Enter OD, inches:", text: $amt8)
                     .modify1()
-                
+                    let amtx6 = (amt6 as NSString).doubleValue
+                    let amtx7 = (amt7 as NSString).doubleValue
+                    let amtx8 = (amt8 as NSString).doubleValue
+                    Text("Formula 3: AV ft/min: \(av3(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                                        .modify1()
+                    Text("Formula 3: AV ft/sec: \(av4(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                                                .modify1()
                     }
                 Group{
                 Divider()
-                    Text("Input for mMtric Calculations:")
+                    Text("Input for Metric Calculations:")
+                        .modify3()
                 Divider()
                 
                     Text("Enter pump output, liters/min:")
@@ -1247,11 +1268,18 @@ struct annular_velocity: View {
                     Text("Enter Annular volume, l/m:")
                     TextField("Enter Annular volume, l/m:", text: $amt10)
                     .modify1()
+                    let amtx8 = (amt8 as NSString).doubleValue
+                    let amtx9 = (amt9 as NSString).doubleValue
+                    let amtx10 = (amt10 as NSString).doubleValue
+                    Text("Annual velocity,m/min using metric: \(av5(parm1: amtx9, parm2: amtx10, parm3: amtx8))")
+                                                        .modify1()
+                    Text("Annual velocity,m/sec using metric:: \(av6(parm1: amtx9, parm2: amtx10, parm3: amtx8))")
                 Divider()
                     }
                 
                 Group{
                     Text("Input for S.I. Calculations:")
+                        .modify3()
                     Divider()
                     Text("Enter pump output, m**3/min")
                     TextField("Enter pump output, m**3/min", text: $amt11)
@@ -1260,12 +1288,18 @@ struct annular_velocity: View {
                     Text("Enter Annular volume, m**3/min:")
                     TextField("Enter Annular volume, m**3/m:", text: $amt12)
                     .modify2()
+                    let amtx8 = (amt8 as NSString).doubleValue
+                    let amtx11 = (amt11 as NSString).doubleValue
+                    let amtx12 = (amt12 as NSString).doubleValue
+                    Text("Annual velocity,m/min using S.i. units: \(av7(parm1: amtx11, parm2: amtx12,parm3: amtx8))")
+                                                                                .modify1()
                 Divider()
                     }
                 
                 
                Group{
                     Text("Input for Pump output, gpm, required for a desired annuar velocity, ft/min:")
+                       .modify3()
                     Divider()
                    
                     Text("Enter Desired annular velocity, ft/min:")
@@ -1278,9 +1312,37 @@ struct annular_velocity: View {
                    Text("Outside diameter of pipe, tubing or collars, inches:")
                    TextField("Outside diameter of pipe, tubing or collars, inches:", text: $amt15)
                    .modify2()
+                   let amtx13 = (amt13 as NSString).doubleValue
+                   let amtx14 = (amt14 as NSString).doubleValue
+                   let amtx15 = (amt15 as NSString).doubleValue
+                   Text("Pump output required for a desired annular velociy, gpm \(av8(parm1: amtx13, parm2: amtx14,parm3: amtx15))")
+                                       .modify1()
                 Divider()
             }
             
+                Group{
+                     Text("Strokes per minute for a given annular velocity:")
+                        .modify3()
+                     Divider()
+                    
+                     Text("Enter annular velocity, ft/min:")
+                     TextField("Enter annular velocity, ft/min:", text: $amt16)
+                     
+                 .modify1()
+                     Text("Enter annular capacity, bbl/ft:")
+                     TextField("Enter annular capacity, bbl/ft:", text: $amt17)
+                     .modify1()
+                    Text("Enter pump output, bbl/stk:")
+                    TextField("Enter pump output, bbl/stk:", text: $amt18)
+                    .modify2()
+                    let amtx16 = (amt16 as NSString).doubleValue
+                    let amtx17 = (amt17 as NSString).doubleValue
+                    let amtx18 = (amt18 as NSString).doubleValue
+                    Text("Strokes per minute (SPM) for a given annular velocity: \(av9(parm1: amtx16, parm2: amtx17,parm3: amtx18))")
+                                        .modify1()
+                 Divider()
+             }
+             
                 Group {
                 let amtx = (amt as NSString).doubleValue
                 let amtx2 = (amt2 as NSString).doubleValue
@@ -1297,8 +1359,21 @@ struct annular_velocity: View {
                     let amtx13 = (amt13 as NSString).doubleValue
                     let amtx14 = (amt14 as NSString).doubleValue
                     let amtx15 = (amt15 as NSString).doubleValue
+                    let amtx16 = (amt16 as NSString).doubleValue
                     
+                    let amtx17 = (amt17 as NSString).doubleValue
+                    
+                    let amtx18 = (amt18 as NSString).doubleValue
+                    
+                    Text("Summary of all Formulas:")
+                        .modify3()
                     Group {
+                       // Divider()
+                        
+                //        Text("Summary of all formulas:")
+                //            .modify3()
+                        Divider()
+                        
         Text("Formula 1: annular velocity, ft/min:  \(av1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
                     .modify1()
        
@@ -1318,6 +1393,9 @@ struct annular_velocity: View {
         Text("Annual velocity,m/min using S.i. units: \(av7(parm1: amtx11, parm2: amtx12,parm3: amtx8))")
                                                                     .modify1()
         Text("Pump output required for a desired annular velociy, gpm \(av8(parm1: amtx13, parm2: amtx14,parm3: amtx15))")
+                            .modify1()
+        Text("Strokes per minute (SPM) for a given annular velocity: \(av9(parm1: amtx16, parm2: amtx17,parm3: amtx18))")
+                            .modify1()
        
                     }
                
@@ -1363,6 +1441,10 @@ func av7(parm1: Double, parm2: Double, parm3: Double) -> Double {
 func av8(parm1: Double, parm2: Double, parm3: Double) -> Double {
                      var total: Double = 0
     total =  (parm1 * (pow(parm2,2) - pow(parm3,2))) / 24.5
+                     return total}
+func av9(parm1: Double, parm2: Double, parm3: Double) -> Double {
+                     var total: Double = 0
+    total =  ((parm1 * parm2) / parm3)
                      return total}
 struct Modify1: ViewModifier {
     func body(content: Content) -> some View {

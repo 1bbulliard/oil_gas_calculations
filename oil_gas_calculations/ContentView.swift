@@ -52,15 +52,20 @@ struct ContentView: View {
                         Divider()
                         NavigationLink("Convert Specific Gravity-->", destination: specific_gravity())
                         Divider()
+                        }
+                        .modify1()
+                        Group {
                         NavigationLink("Equivalent Circulating Density, ppg-->", destination: nextview14())
                             Divider()
                         NavigationLink("Pump output-->", destination: pumpoutput())
                         Divider()
-                            NavigationLink("Annular Velocity-->", destination: annular_velocity())
+                        NavigationLink("Annular Velocity-->", destination: annular_velocity())
+                        Divider()
+                        NavigationLink("Capacity Formulas-->", destination: annular_velocity())
                             Divider()
                             
                     }
-                        
+                    //    .multilineTextAlignment(.leading)
                     .modify1()
                     .navigationBarHidden(true)
                     }
@@ -85,6 +90,7 @@ struct PressureGradientView: View {
                 List{
                    
                         Text("Pressure Gradient")
+                   
                         .fontWeight(.semibold)
                         .padding(.all, 15.0)
                         .modify1()
@@ -1150,19 +1156,17 @@ func dpf3(parm1: Double, parm2: Double, parm3: Double) -> Double {
         return total}
 
 struct annular_velocity: View {
-//    struct nextview14: View {
-
 
     @State private var amt = ""
-        @State private var amt2 = ""
-        @State private var amt3 = ""
-        @State private var amt4 = ""
-        @State private var amt5 = ""
-        @State private var amt6 = ""
-        @State private var amt7 = ""
-        @State private var amt8 = ""
-        @State private var amt9 = ""
-        @State private var amt10 = ""
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    @State private var amt4 = ""
+    @State private var amt5 = ""
+    @State private var amt6 = ""
+    @State private var amt7 = ""
+    @State private var amt8 = ""
+    @State private var amt9 = ""
+    @State private var amt10 = ""
     @State private var amt11 = ""
     @State private var amt12 = ""
     @State private var amt13 = ""
@@ -1177,31 +1181,31 @@ struct annular_velocity: View {
         VStack  {
             
             ScrollView{
-        Group {
-                
-            Text("Annular Velocity:")
-        
-                .modify3()
-            Text("Input for formula 1:")
-                .modify3()
-            Divider()
-            Text("Enter pump output, bbl/min:")
-        
-          
-            TextField("Enter pump output, bbl/min:", text: $amt4)
-            .modify1()
-            
-                Text("Enter annual capacity, bbl/ft:")
-     
-                TextField("Enter annual capacity, bbl/ft:", text: $amt5)
-                .modify1()
-                Divider()
-            let amtx3 = (amt3 as NSString).doubleValue
-            let amtx4 = (amt4 as NSString).doubleValue
-            let amtx5 = (amt5 as NSString).doubleValue
-            Text("Formula 1: annular velocity, ft/min:  \(av1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                Group {
+                    
+                    Text("Annular Velocity:")
+                    
+                        .modify3()
+                    Text("Input for formula 1:")
+                        .modify3()
+                    Divider()
+                    Text("Enter pump output, bbl/min:")
+                    
+                    
+                    TextField("Enter pump output, bbl/min:", text: $amt4)
                         .modify1()
-        }
+                    
+                    Text("Enter annual capacity, bbl/ft:")
+                    
+                    TextField("Enter annual capacity, bbl/ft:", text: $amt5)
+                        .modify1()
+                    Divider()
+                    let amtx3 = (amt3 as NSString).doubleValue
+                    let amtx4 = (amt4 as NSString).doubleValue
+                    let amtx5 = (amt5 as NSString).doubleValue
+                    Text("Formula 1: annular velocity, ft/min:  \(av1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .modify1()
+                }
      Group {
                     Divider()
                 Text("Input for formula 2:")
@@ -1449,8 +1453,7 @@ func av9(parm1: Double, parm2: Double, parm3: Double) -> Double {
 struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
-            //frame(width:250, height: 22, alignment: .leading)
-          //  .font(.system(size: 12))
+          //  .multilineTextAlignment(.leading)
             .font(.system(size: 18))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))

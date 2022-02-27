@@ -1473,6 +1473,9 @@ struct capacity_formulas: View {
     @State private var amt16 = ""
     @State private var amt17 = ""
     @State private var amt18 = ""
+    @State private var amtx3 = ""
+    @State private var amtx4 = ""
+    @State private var amtx5 = ""
     // @State private var amtx: Double
     var body: some View {
         
@@ -1504,11 +1507,16 @@ struct capacity_formulas: View {
                         .modify1()
                     Text("Annular capacity, gal/ft:  \(cf3(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
                         .modify1()
+                    
+                    
                 }
                 Group {
+                    let amtx3 = (amt3 as NSString).doubleValue
+                    let amtx4 = (amt4 as NSString).doubleValue
+                    let amtx5 = (amt5 as NSString).doubleValue
                     Divider()
-                    Text("Input for formula 2:")
-                        .modify3()
+                    Text("Annular capacity, ft/gal:  \(cf4(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .modify1()
                     Divider()
                     Text("Enter  circulation rate, gpm:")
                     //     .modify1()
@@ -1727,7 +1735,7 @@ func cf3(parm1: Double, parm2: Double, parm3: Double) -> Double {
     return total}
 func cf4(parm1: Double, parm2: Double, parm3: Double) -> Double {
     var total: Double = 0
-    total =  (parm1 * 17.16) / ((pow(parm2,2)) - (pow(parm3,2)))
+    total = 24.51 / (pow(parm1,2) - pow(parm2,2))
     return total}
 func cf5(parm1: Double, parm2: Double, parm3: Double) -> Double {
     var total: Double = 0

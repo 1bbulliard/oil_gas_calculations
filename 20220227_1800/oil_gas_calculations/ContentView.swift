@@ -1526,42 +1526,8 @@ struct capacity_formulas: View {
                         .modify1()
                     Text("Annular capacity, lin ft/ft**3:  \(cf6(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
                         .modify1()
-                    Text("Annular capacity between casing and multiple strings of tubing:")
-                    
                 }
-                Group {
-                    Divider()
-                    Text("Enter Casing Hole Size (ID), in.:")
-                    TextField("Enter Casing Hole Size (ID), in.:", text: $amt6)
-                        .modify1()
-                    Text("Enter Tubing 1. Inner diam, in.:")
-                    TextField("Enter Tubing 1. Inner diam, in.:", text: $amt7)
-                        .modify1()
-                    Text("Enter Tubing 2. Inner diam, in.:")
-                    TextField("Enter Tubing 2. Inner diam, in.:", text: $amt8)
-                        .modify1()
-                }
-                Group {
-                    let amtx6 = (amt6 as NSString).doubleValue
-                    let amtx7 = (amt7 as NSString).doubleValue
-                    let amtx8 = (amt8 as NSString).doubleValue
-                    Text("Annular capacity, bbl/ft:  \(cf7(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
-                        .modify1()
-                    Text("Annular capacity, ft/bbl:  \(cf8(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
-                        .modify1()
-                    Text("Annular capacity, gal/ft:  \(cf9(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
-                        .modify1()
-                    Text("Annular capacity, ft/gal:  \(cf10(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
-                        .modify1()
-                    Text("Enter Tubing 3 for next calculation please. Inner diam, in.:")
-                    TextField("Enter Tubing 3 for next calculation please. Inner diam, in.:", text: $amt9)
-                        .modify1()
-                    let amtx9 = (amt9 as NSString).doubleValue
-                    Text("Annular capacity, ft**3/lin.ft.:  \(cf11(parm1: amtx6, parm2: amtx7, parm3: amtx8, parm4: amtx9))")
-                        .modify1()
-                    Text("Annular capacity, lin ft/ ft**3.:  \(cf12(parm1: amtx6, parm2: amtx7, parm3: amtx8, parm4: amtx9))")
-                        .modify1()
-                }
+                
                     
                 }
                 
@@ -1599,31 +1565,17 @@ func cf6(parm1: Double, parm2: Double, parm3: Double) -> Double {
     return total}
 func cf7(parm1: Double, parm2: Double, parm3: Double) -> Double {
     var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2))) / 1029.4
+    total =  parm1 / parm2
     return total}
 func cf8(parm1: Double, parm2: Double, parm3: Double) -> Double {
     var total: Double = 0
-    total =  1029.4 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2)))
+    total =  (parm1 * (pow(parm2,2) - pow(parm3,2))) / 24.5
     return total}
 func cf9(parm1: Double, parm2: Double, parm3: Double) -> Double {
     var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2))) / 24.51
-    return total}
-func cf10(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  24.51 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2)))
-    return total}
-func cf11(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2))) / 183.35
-    return total}
-func cf12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
+    total =  ((parm1 * parm2) / parm3)
     return total}
 // end code
-
-
 struct sendit: View {
     @State var numbertomessage = ""
     @State var message = ""

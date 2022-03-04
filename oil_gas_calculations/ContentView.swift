@@ -33,7 +33,7 @@ struct ContentView: View {
            
         NavigationView{
                 List{
-                    ScrollView {
+                   ScrollView {
                         
                     
                     Group{
@@ -66,14 +66,28 @@ struct ContentView: View {
                         }
                         .modify1()
                         Group {
+                        
+                          
+                            
                             NavigationLink("Capacity Tubular and open holes-->", destination: capacity_hole())
                                 Divider()
                             NavigationLink("For problems or issues-->", destination: sendit())
                                 Divider()
                             
                     }
+                        .modify1()
+                       Group {
+                       
+                         
+                           Text("===== ")
+                           Text("===== ")
+                           Text("===== ")
+                           Text("===== ")
+                           Text("===== ")
+                       }
                     //    .multilineTextAlignment(.leading)
                     .modify1()
+                //    .frame(maxWidth: .infinity)
                     .navigationBarHidden(true)
                     }
         
@@ -1665,7 +1679,7 @@ struct capacity_hole: View {
                     
                     Text("Enter hole size (DH), in.:")
                     TextField("Enter hole size (DH), in.:", text: $amt5)
-                        .modify1()
+                        .modify2()
                     
                     Divider()
                     let amtx3 = (amt3 as NSString).doubleValue

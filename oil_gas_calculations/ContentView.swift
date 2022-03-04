@@ -38,7 +38,11 @@ struct ContentView: View {
                     
                     Group{
 
-                       
+                    Text("scroll slider to the right------>")
+                            .font(.system(size: 18))
+                            .foregroundColor(Color.black)
+                            .background(Color.green.cornerRadius(10))
+                            .background(RoundedRectangle(cornerRadius: 14))
                     NavigationLink("Pressure Gradient--> ", destination: PressureGradientView())
                   //          .frame(width: 255.0, height: 150.0, alignment: .center)
                             .modify1()

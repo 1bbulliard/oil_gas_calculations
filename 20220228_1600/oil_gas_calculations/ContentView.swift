@@ -66,8 +66,6 @@ struct ContentView: View {
                         }
                         .modify1()
                         Group {
-                            NavigationLink("Capacity Tubular and open holes-->", destination: capacity_hole())
-                                Divider()
                             NavigationLink("For problems or issues-->", destination: sendit())
                                 Divider()
                             
@@ -1624,138 +1622,7 @@ func cf12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double 
     total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
     return total}
 // end code
-// BEGIN
-struct capacity_hole: View {
-    
-    @State private var amt = ""
-    @State private var amt2 = ""
-    @State private var amt3 = ""
-    @State private var amt4 = ""
-    @State private var amt5 = ""
-    @State private var amt6 = ""
-    @State private var amt7 = ""
-    @State private var amt8 = ""
-    @State private var amt9 = ""
-    @State private var amt10 = ""
-    @State private var amt11 = ""
-    @State private var amt12 = ""
-    @State private var amt13 = ""
-    @State private var amt14 = ""
-    @State private var amt15 = ""
-    @State private var amt16 = ""
-    @State private var amt17 = ""
-    @State private var amt18 = ""
-    @State private var amtx3 = ""
-    @State private var amtx4 = ""
-    @State private var amtx5 = ""
-    // @State private var amtx: Double
-    var body: some View {
-        
-        VStack  {
-            
-            ScrollView{
-                Group {
-                    
-                    Text("Capacity tubuluars and open hole: drill pipe, drill collars, tubing and any cylindrical object")
-                    
-                        .modify3()
-                  
-                    Divider()
-                    
-                    
-                    Text("Enter hole size (DH), in.:")
-                    TextField("Enter hole size (DH), in.:", text: $amt5)
-                        .modify1()
-                    
-                    Divider()
-                    let amtx3 = (amt3 as NSString).doubleValue
-                    let amtx4 = (amt4 as NSString).doubleValue
-                    let amtx5 = (amt5 as NSString).doubleValue
-                    Text("Capacity BBL/ft:  \(ch1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
-                        .modify1()
-                    Text("Capacity ft/bbl: \(ch2(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
-                        .modify1()
-                    Text("capacity, gal/ft:  \(ch3(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
-                        .modify1()
-                    
-                    
-                }
-                Group {
-                    let amtx3 = (amt3 as NSString).doubleValue
-                    let amtx4 = (amt4 as NSString).doubleValue
-                    let amtx5 = (amt5 as NSString).doubleValue
-                    Divider()
-                    Text("capacity, ft/gal:  \(ch4(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
-                        .modify1()
-                    Text("capacity, ft**3/linft:  \(ch5(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
-                        .modify1()
-                    Text("capacity, lin ft/ft**3:  \(ch6(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
-                        .modify1()
-                    
-                    
-                }
-                
-                
-                    
-                }
-                
-            }
-        }
-        
-        
-    }
 
-func ch1(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm2,2) ) / 1029.4
-    return total}
-
-func ch2(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =   1029.4 / (pow(parm2,2) )
-    return total}
-
-func ch3(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm2,2) ) / 24.51
-    return total}
-func ch4(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  24.51 / (pow(parm2,2) )
-    return total}
-func ch5(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm2,2) ) / 183.35
-    return total}
-func ch6(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total = 183.35 /  pow(parm2,2)
-    return total}
-func ch7(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2))) / 1029.4
-    return total}
-func ch8(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  1029.4 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2)))
-    return total}
-func ch9(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2))) / 24.51
-    return total}
-func ch10(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  24.51 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2)))
-    return total}
-func ch11(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2))) / 183.35
-    return total}
-func ch12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
-    return total}
-// END
 
 struct sendit: View {
     @State var numbertomessage = ""

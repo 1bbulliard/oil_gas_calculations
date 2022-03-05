@@ -71,9 +71,6 @@ struct ContentView: View {
                             
                             NavigationLink("Capacity Tubular and open holes-->", destination: capacity_hole())
                                 Divider()
-                            NavigationLink("amount of cuttings drilled per foot of hole drilled:-->", destination: cuttings_drilled())
-                                Divider()
-                            //Amount of cuttings drilled per foot of hole drilled:"
                             NavigationLink("For problems or issues-->", destination: sendit())
                                 Divider()
                             
@@ -1665,8 +1662,11 @@ struct capacity_hole: View {
                 Group {
                     
                     Text("Capacity tubuluars and open hole: drill pipe, drill collars, tubing and any cylindrical object")
-                    .modify3()
-                  Divider()
+                    
+                        .modify3()
+                  
+                    Divider()
+                    
                     
                     Text("Enter hole size (DH), in.:")
                     TextField("Enter hole size (DH), in.:", text: $amt5)
@@ -1761,152 +1761,6 @@ func ch12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double 
     total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
     return total}
 // END
-// begin
-struct cuttings_drilled: View {
-    
-    @State private var amt1 = ""
-    @State private var amt2 = ""
-    @State private var amt3 = ""
-    @State private var amt4 = ""
-    @State private var amt5 = ""
-    @State private var amt6 = ""
-    @State private var amt7 = ""
-    @State private var amt8 = ""
-    @State private var amt9 = ""
-    @State private var amt10 = ""
-    @State private var amt11 = ""
-    @State private var amt12 = ""
-    @State private var amt13 = ""
-    @State private var amt14 = ""
-    @State private var amt15 = ""
-    @State private var amt16 = ""
-    @State private var amt17 = ""
-    @State private var amt18 = ""
-    @State private var amtx3 = ""
-    @State private var amtx4 = ""
-    @State private var amtx5 = ""
-    // @State private var amtx: Double
-    var body: some View {
-        
-        VStack  {
-            
-            ScrollView{
-                Group {
-                    
-                    Text("Amount of cuttings drilled per foot of hole drilled:")
-                        .modify3()
-                    Divider()
-                    Text("Enter hole size (DH), in.:")
-                    TextField("Enter hole size (DH), in.:", text: $amt1)
-                        .modify2()
-                    Text("Enter porosity as a fraction (ie 20%= .20):")
-                    TextField("Enter porosity as a fraction ", text: $amt2)
-                        .modify2()
-                    
-                    Divider()
-                    let amtx1 = (amt1 as NSString).doubleValue
-                    let amtx2 = (amt2 as NSString).doubleValue
-                    let amtx3 = (amt3 as NSString).doubleValue
-                    Text("Barrels of cutting drilled for one foot of \(amt1) hole drilled with \(amt2) porosity: \(cd1(parm1: amtx1, parm2: amtx2, parm3: amtx3))")
-                        .modify1()
-                    Text("cubic feet of cuttings drilled for one foot of \(amt1) hole drilled with \(amt2) porosity: \(cd2(parm1: amtx1, parm2: amtx2, parm3: amtx3))")
-                        .modify1()
-                    
-                }
-                
-                Group {
-                    
-                    Text("Total solids generated in pounds calculation:")
-                        .modify3()
-                    Divider()
-                    Text("Enter capacity of hole, bbl/ft:")
-                    TextField("Enter capacity of hole, bbl/ft:", text: $amt4)
-                        .modify2()
-                    Text("Enter footage drilled in feet:")
-                    TextField("Enter footage drilled in feet:", text: $amt5)
-                        .modify2()
-                    Text("Enter specific gravity gm/cc:")
-                    TextField("Enter specific gravity gm/cc:", text: $amt6)
-                        .modify2()
-                            }
-                    Group {
-                    Text("Enter porosity as a fraction (ie 20%= .20):")
-                    TextField("Enter porosity as a fraction ", text: $amt7)
-                        .modify2()
-                    Divider()
-                    
-                
-                    let amtx4 = (amt4 as NSString).doubleValue
-                    let amtx5 = (amt5 as NSString).doubleValue
-                    let amtx6 = (amt6 as NSString).doubleValue
-                    let amtx7 = (amt7 as NSString).doubleValue
-                
-                        Text("Total pounds of solids generated in drilling \(amtx5)  ft of a \(amtx4) bbl/ft with SG of cutting gm/cc = \(amtx6) and porosity of \(amtx7) is: \(cd3(parm1: amtx4, parm2: amtx5, parm3: amtx6, parm4: amtx7))")
-                        .modify1()
-                    
-                    
-                }
-                
-                
-            }
-            
-        }
-        }
-        
-        
-    }
-
-func cd1(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  ((pow(parm1,2) ) / 1029.4) * (1 - parm2)
-    return total}
-
-func cd2(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  ((pow(parm1,2) ) / 144) * 0.7854 * (1 - parm2)
-    return total}
-
-func cd3(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  350 * parm1 * parm2 * (1.0 - parm4) * parm3
-    return total}
-func cd4(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  24.51 / (pow(parm2,2) )
-    return total}
-func cd5(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm2,2) ) / 183.35
-    return total}
-func cd6(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total = 183.35 /  pow(parm2,2)
-    return total}
-func cd7(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2))) / 1029.4
-    return total}
-func cd8(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  1029.4 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2)))
-    return total}
-func cd9(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2))) / 24.51
-    return total}
-func cd10(parm1: Double, parm2: Double, parm3: Double) -> Double {
-    var total: Double = 0
-    total =  24.51 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2)))
-    return total}
-func cd11(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2))) / 183.35
-    return total}
-func cd12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
-    return total}
-// end
 
 struct sendit: View {
     @State var numbertomessage = ""

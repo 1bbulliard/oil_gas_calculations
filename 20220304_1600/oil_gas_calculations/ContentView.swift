@@ -25,20 +25,20 @@ struct ContentView: View {
       //         .ignoresSafeArea()
             
             Divider()
-      
+      //      Text("Oil Gas Calculations")
+           //     .font(.largeTitle)
+        //        .fontWeight(.semibold)
+        //
+    
            
         NavigationView{
                 List{
-                   ScrollView {
+                    ScrollView {
                         
                     
                     Group{
 
-                    Text("scroll slider is to the right----------->")
-                            .font(.system(size: 18))
-                            .foregroundColor(Color.black)
-                            .background(Color.green.cornerRadius(10))
-                            .background(RoundedRectangle(cornerRadius: 14))
+                       
                     NavigationLink("Pressure Gradient--> ", destination: PressureGradientView())
                   //          .frame(width: 255.0, height: 150.0, alignment: .center)
                             .modify1()
@@ -51,7 +51,7 @@ struct ContentView: View {
                         NavigationLink("Convert Drilling pressure into mud weight-->", destination: nextview12())
                         Divider()
                         NavigationLink("Convert Specific Gravity-->", destination: specific_gravity())
-                         Divider()
+                        Divider()
                         }
                         .modify1()
                         Group {
@@ -66,19 +66,14 @@ struct ContentView: View {
                         }
                         .modify1()
                         Group {
-                        
-                          
-                            
                             NavigationLink("Capacity Tubular and open holes-->", destination: capacity_hole())
                                 Divider()
                             NavigationLink("For problems or issues-->", destination: sendit())
                                 Divider()
                             
                     }
-                 //       .frame(width: 300, height: 100, alignment: .leading)
-
-                        .modify1()
-                      
+                    //    .multilineTextAlignment(.leading)
+                    .modify1()
                     .navigationBarHidden(true)
                     }
         
@@ -1670,7 +1665,7 @@ struct capacity_hole: View {
                     
                     Text("Enter hole size (DH), in.:")
                     TextField("Enter hole size (DH), in.:", text: $amt5)
-                        .modify2()
+                        .modify1()
                     
                     Divider()
                     let amtx3 = (amt3 as NSString).doubleValue

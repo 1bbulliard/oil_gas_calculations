@@ -77,11 +77,9 @@ struct ContentView: View {
                                 Divider()
                             NavigationLink("Buoyancy factor using mud weight ppg and mud wieght, lb/ft**3:-->", destination: buoyancy_factor())
                                 Divider()
-                            NavigationLink("Hydrostatic pressure Decrease pulling dry and wet pipe-->", destination: hydrostatic_pressure_pulling_pipe())
-                                Divider()
-                        }
-                        .modify1()
-                       Group {
+                            //Amount of cuttings drilled per foot of hole drilled:"
+                            // Control_Drilling
+                       // buoyancy_factor:
                             NavigationLink("For problems or issues-->", destination: sendit())
                                 Divider()
                             
@@ -2056,95 +2054,6 @@ func bf1(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
 func bf2(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
     var total: Double = 0
     total =  (489 - parm2) / 489
-    return total}
-
-struct hydrostatic_pressure_pulling_pipe: View {
-    
-    @State private var amt1 = ""
-    @State private var amt2 = ""
-    @State private var amt3 = ""
-    @State private var amt4 = ""
-    @State private var amt5 = ""
-    @State private var amt6 = ""
-    @State private var amt7 = ""
-    @State private var amt8 = ""
-    @State private var amt9 = ""
-    @State private var amt10 = ""
-    @State private var amt11 = ""
-    @State private var amt12 = ""
-    @State private var amt13 = ""
-    @State private var amt14 = ""
-    @State private var amt15 = ""
-    @State private var amt16 = ""
-    @State private var amt17 = ""
-    @State private var amt18 = ""
-    @State private var amtx3 = ""
-    @State private var amtx4 = ""
-    @State private var amtx5 = ""
-    // @State private var amtx: Double
-    var body: some View {
-        
-        VStack  {
-            
-            ScrollView{
-                Group {
-                    
-                    Text("Hydrostatic pressure pulling wet and dry pipe")
-                        .modify3()
-                    Divider()
-                    Text("Enter number of stands:")
-                    TextField("Enter number of stands:", text: $amt1)
-                        .modify1()
-                    Text("Enter avg length per stand (ft):")
-                    TextField("Enter avg length per stand (ft):", text: $amt2)
-                        .modify1()
-                    Text("Enter pipe displacement (bbl/ft):")
-                    TextField("Enter pipe displacement (bbl/ft):", text: $amt3)
-                        .modify1()
-                }
-                Group {
-                    Text("Enter casing capacity (bbl/ft):")
-                    TextField("Enter casing capacity  (bbl/ft):", text: $amt4)
-                        .modify1()
-                    Text("Enter mud wt (ppg):")
-                    TextField("Enter mud wt (ppg):", text: $amt5)
-                        .modify1()
-                    Text("Enter pipe capacity(bbl/ft) for wet pipe calc:")
-                    TextField("Enter pipe capacity(bbl/ft) for wet pipe calc:", text: $amt6)
-                        .modify2()
-                    
-                    
-                }
-                
-                Group {
-                    Divider()
-                    let amtx1 = (amt1 as NSString).doubleValue
-                    let amtx2 = (amt2 as NSString).doubleValue
-                    let amtx3 = (amt3 as NSString).doubleValue
-                    let amtx4 = (amt4 as NSString).doubleValue
-                    let amtx5 = (amt5 as NSString).doubleValue
-                    let amtx6 = (amt6 as NSString).doubleValue
-                    Text("Hydrostatic pressure (PSI) pulling dry pipe is  is \(hpp1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
-                        .modify1()
-                    Text("Hydrostatic pressure (PSI) pulling wet pipe is  is \(hpp2(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
-                        .modify1()
-                   
-                }
-            }
-            
-        }
-    }
-    
-    
-}
-
-func hpp1(parm1: Double, parm2: Double, parm3: Double, parm4: Double, parm5: Double, parm6: Double) -> Double {
-    var total: Double = 0
-    total =  ((parm1 * parm2 * parm3) / (parm4 - parm3) ) * 0.052 * parm5
-    return total}
-func hpp2(parm1: Double, parm2: Double, parm3: Double, parm4: Double, parm5: Double, parm6: Double) -> Double {
-    var total: Double = 0
-    total =  (parm1 * parm2 * (parm3 + parm6)) / (parm4 - (parm3 + parm6)) * 0.052 * parm5
     return total}
 
 

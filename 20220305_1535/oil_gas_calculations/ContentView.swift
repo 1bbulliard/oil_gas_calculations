@@ -20,7 +20,7 @@ struct ContentView: View {
         VStack  {
             Image("oil_rig")
                 .resizable()
-                .frame(width: 385.0, height: 100.0, alignment: .leading)
+               .frame(width: 385.0, height: 100.0, alignment: .center)
              //   .scaledToFit()
       //         .ignoresSafeArea()
             
@@ -29,15 +29,15 @@ struct ContentView: View {
            
         NavigationView{
                 List{
-                   ScrollView  {
+                   ScrollView {
                         
                     
                     Group{
 
-                    Text("scroll slider is to the right------------>")
+                    Text("scroll slider is to the right----------->")
                             .font(.system(size: 18))
-                            .foregroundColor(Color.white)
-                            .background(Color.black.cornerRadius(10))
+                            .foregroundColor(Color.black)
+                            .background(Color.green.cornerRadius(10))
                             .background(RoundedRectangle(cornerRadius: 14))
                     NavigationLink("Pressure Gradient--> ", destination: PressureGradientView())
                   //          .frame(width: 255.0, height: 150.0, alignment: .center)
@@ -73,13 +73,7 @@ struct ContentView: View {
                                 Divider()
                             NavigationLink("amount of cuttings drilled per foot of hole drilled:-->", destination: cuttings_drilled())
                                 Divider()
-                            NavigationLink("Control Drilling maximum drilling rate(MDR), when drilling large hole ( 14 3/4 + Inches):-->", destination: Control_Drilling())
-                                Divider()
-                            NavigationLink("Buoyancy factor using mud weight ppg and mud wieght, lb/ft**3:-->", destination: buoyancy_factor())
-                                Divider()
                             //Amount of cuttings drilled per foot of hole drilled:"
-                            // Control_Drilling
-                       // buoyancy_factor:
                             NavigationLink("For problems or issues-->", destination: sendit())
                                 Divider()
                             
@@ -1834,20 +1828,20 @@ struct cuttings_drilled: View {
                     Text("Enter specific gravity gm/cc:")
                     TextField("Enter specific gravity gm/cc:", text: $amt6)
                         .modify2()
-                }
-                Group {
+                            }
+                    Group {
                     Text("Enter porosity as a fraction (ie 20%= .20):")
                     TextField("Enter porosity as a fraction ", text: $amt7)
                         .modify2()
                     Divider()
                     
-                    
+                
                     let amtx4 = (amt4 as NSString).doubleValue
                     let amtx5 = (amt5 as NSString).doubleValue
                     let amtx6 = (amt6 as NSString).doubleValue
                     let amtx7 = (amt7 as NSString).doubleValue
-                    
-                    Text("Total pounds of solids generated in drilling \(amtx5)  ft of a \(amtx4) bbl/ft with SG of cutting gm/cc = \(amtx6) and porosity of \(amtx7) is: \(cd3(parm1: amtx4, parm2: amtx5, parm3: amtx6, parm4: amtx7))")
+                
+                        Text("Total pounds of solids generated in drilling \(amtx5)  ft of a \(amtx4) bbl/ft with SG of cutting gm/cc = \(amtx6) and porosity of \(amtx7) is: \(cd3(parm1: amtx4, parm2: amtx5, parm3: amtx6, parm4: amtx7))")
                         .modify1()
                     
                     
@@ -1857,10 +1851,10 @@ struct cuttings_drilled: View {
             }
             
         }
+        }
+        
+        
     }
-    
-    
-}
 
 func cd1(parm1: Double, parm2: Double, parm3: Double) -> Double {
     var total: Double = 0
@@ -1913,150 +1907,6 @@ func cd12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double 
     total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
     return total}
 // end
-// begin
-struct Control_Drilling: View {
-    
-    @State private var amt1 = ""
-    @State private var amt2 = ""
-    @State private var amt3 = ""
-    @State private var amt4 = ""
-    @State private var amt5 = ""
-    @State private var amt6 = ""
-    @State private var amt7 = ""
-    @State private var amt8 = ""
-    @State private var amt9 = ""
-    @State private var amt10 = ""
-    @State private var amt11 = ""
-    @State private var amt12 = ""
-    @State private var amt13 = ""
-    @State private var amt14 = ""
-    @State private var amt15 = ""
-    @State private var amt16 = ""
-    @State private var amt17 = ""
-    @State private var amt18 = ""
-    @State private var amtx3 = ""
-    @State private var amtx4 = ""
-    @State private var amtx5 = ""
-    // @State private var amtx: Double
-    var body: some View {
-        
-        VStack  {
-            
-            ScrollView{
-                Group {
-                    
-                    Text("Max drilling rate (MDR),ft/hr, when drilling large diameter holles (14 3/4in. and larger)")
-                        .modify3()
-                    Divider()
-                    Text("Enter mud wt out, ppg:")
-                    TextField("Enter mud wt out, ppg::", text: $amt1)
-                        .modify2()
-                    Text("Enter mud wt in, ppg:")
-                    TextField("Enter mud wt in, ppg::", text: $amt2)
-                        .modify2()
-                    Text("Enter circulation rate, gpm:")
-                    TextField("Enter circulationi rate, gpm:", text: $amt3)
-                        .modify2()
-                    Text("Enter hole size, inches:")
-                    TextField("Enter hole size, inches", text: $amt4)
-                        .modify2()
-                }
-                
-                Group {
-                    Divider()
-                    let amtx1 = (amt1 as NSString).doubleValue
-                    let amtx2 = (amt2 as NSString).doubleValue
-                    let amtx3 = (amt3 as NSString).doubleValue
-                    let amtx4 = (amt4 as NSString).doubleValue
-                    Text("Maximum drilling Rate: \(md1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4)) with mud in: \(amt2) , mud out: \(amt1), circulation rate/gpm of \(amt3) and hole size of \(amt4)")
-                        .modify1()
-                }
-            }
-            
-        }
-    }
-    
-    
-}
-
-func md1(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  (67 * (parm1 - parm2) * parm3 ) / pow(parm4,2)
-    return total}
-
-
-struct buoyancy_factor: View {
-    
-    @State private var amt1 = ""
-    @State private var amt2 = ""
-    @State private var amt3 = ""
-    @State private var amt4 = ""
-    @State private var amt5 = ""
-    @State private var amt6 = ""
-    @State private var amt7 = ""
-    @State private var amt8 = ""
-    @State private var amt9 = ""
-    @State private var amt10 = ""
-    @State private var amt11 = ""
-    @State private var amt12 = ""
-    @State private var amt13 = ""
-    @State private var amt14 = ""
-    @State private var amt15 = ""
-    @State private var amt16 = ""
-    @State private var amt17 = ""
-    @State private var amt18 = ""
-    @State private var amtx3 = ""
-    @State private var amtx4 = ""
-    @State private var amtx5 = ""
-    // @State private var amtx: Double
-    var body: some View {
-        
-        VStack  {
-            
-            ScrollView{
-                Group {
-                    
-                    Text("Buoyancy Factor (BF)")
-                        .modify3()
-                    Divider()
-                    Text("Enter mud wt, ppg:")
-                    TextField("Enter mud wt, ppg:", text: $amt1)
-                        .modify1()
-                    Text("Enter mud wt, lb/ft**3")
-                    TextField("Enter mud wt, lb/ft**3", text: $amt2)
-                        .modify2()
-                    
-                }
-                
-                Group {
-                    Divider()
-                    let amtx1 = (amt1 as NSString).doubleValue
-                    let amtx2 = (amt2 as NSString).doubleValue
-                    let amtx3 = (amt3 as NSString).doubleValue
-                    let amtx4 = (amt4 as NSString).doubleValue
-                    Text("Buoyancy factor is \(bf1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4)) using mud weight with ppg of \(amt1) ")
-                        .modify1()
-                    Text("Buoyancy factor is \(bf2(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4)) using mud weight with lb/ft**3 of \(amt2) ")
-                        .modify1()
-                }
-            }
-            
-        }
-    }
-    
-    
-}
-
-func bf1(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  (65.5 - parm1) / 65.5
-    return total}
-func bf2(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double {
-    var total: Double = 0
-    total =  (489 - parm2) / 489
-    return total}
-
-
 
 struct sendit: View {
     @State var numbertomessage = ""

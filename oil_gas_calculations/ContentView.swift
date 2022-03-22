@@ -42,27 +42,27 @@ struct ContentView: View {
                     NavigationLink("Pressure Gradient--> ", destination: PressureGradientView())
                    //         .frame(width: 255.0, height: 150.0, alignment: .leading)
                             .modify1()
-                        Divider()
+               //         Divider()
                     NavigationLink("Hydrostatic Pressure---->", destination: HydrostaticPressureView())
                             .modify1()
-                     Divider()
+                //     Divider()
                     }
                         Group {
                         NavigationLink("Convert Drilling pressure into mud weight-->", destination: nextview12())
-                        Divider()
+                  //      Divider()
                         NavigationLink("Convert Specific Gravity-->", destination: specific_gravity())
-                         Divider()
+                  //       Divider()
                         }
                         .modify1()
                         Group {
                         NavigationLink("Equivalent Circulating Density, ppg-->", destination: nextview14())
-                            Divider()
+                   //         Divider()
                         NavigationLink("Pump output-->", destination: pumpoutput())
-                        Divider()
+                   //     Divider()
                         NavigationLink("Annular Velocity-->", destination: annular_velocity())
-                        Divider()
+                    //    Divider()
                         NavigationLink("Capacity Formulas-->", destination: capacity_formulas())
-                            Divider()
+                    //        Divider()
                         }
                         .modify1()
                         Group {
@@ -70,23 +70,23 @@ struct ContentView: View {
                           
                             
                             NavigationLink("Capacity Tubular and open holes-->", destination: capacity_hole())
-                                Divider()
+                      //          Divider()
                             NavigationLink("amount of cuttings drilled per foot of hole drilled:-->", destination: cuttings_drilled())
-                                Divider()
+                       //         Divider()
                             NavigationLink("Control Drilling maximum drilling rate(MDR), when drilling large hole ( 14 3/4 + Inches):-->", destination: Control_Drilling())
-                                Divider()
+                          //      Divider()
                             NavigationLink("Buoyancy factor using mud weight ppg and mud wieght, lb/ft**3:-->", destination: buoyancy_factor())
-                                Divider()
+                      //          Divider()
                             NavigationLink("Hydrostatic pressure Decrease pulling dry and wet pipe-->", destination: hydrostatic_pressure_pulling_pipe())
-                                Divider()
+                      //          Divider()
                             
                         }
                         .modify1()
                        Group {
                            NavigationLink("Calculate overbalance  due to falling mud level (wet/dry)->", destination: overbalance_pulling_pipe())
-                               Divider()
+                       //        Divider()
                             NavigationLink("For problems or issues-->", destination: sendit())
-                                Divider()
+                        //        Divider()
                             
                     }
                  //       .frame(width: 300, height: 100, alignment: .leading)
@@ -118,7 +118,7 @@ struct PressureGradientView: View {
                         Text("Pressure Gradient")
                    
                         .fontWeight(.semibold)
-                        .padding(.all, 15.0)
+                      //  .padding(.all, 15.0)
                         .modify1()
                     Group {
         NavigationLink("Pressure Gradient - Using Mud Weight, ppg ", destination: nextview())
@@ -140,10 +140,10 @@ struct PressureGradientView: View {
         NavigationLink("Convert Drilling fluid density, kg/m³ using kPa/m:", destination: nextview9())
                             .modify1()
                             
-                //            .frame(width: 233, height: 3, alignment: .leading)
+               
                     }                        }
-                    .modify1()
-   // Spacer()
+                   
+
                
                .navigationBarHidden(true)
             }
@@ -169,11 +169,11 @@ struct HydrostaticPressureView: View {
                             .fontWeight(.semibold)
                             .padding(.all, 15.0)
                         NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview10())
-                        Divider()
+                 //       Divider()
                         NavigationLink("Convert to Hydrostatic Pressure using 1.Metric (hydrostatic pressure, bar and 2. S.I. Calculation (hydrostatic pressure kPa)", destination: nextview11())
                        
-                    Spacer()
-                    Spacer()
+            //        Spacer()
+             //       Spacer()
                     }
                     .modify1()
                     }
@@ -199,12 +199,10 @@ struct pumpoutput: View {
                             .padding(.all, 15.0)
                         NavigationLink("Pump output (Triplex Pump): ", destination: triplex_pumpview())
                         NavigationLink("Pump output (Duplex Pump): ", destination: duplex_pumpview())
-                        Divider()
+                     
                         
                         
-                       
-                    Spacer()
-                    Spacer()
+                
                     }
                     .modify1()
                     }
@@ -227,6 +225,7 @@ struct nextview: View {
                         .modify3()
                         Spacer()
                 Text("Enter mud wt ppg: ")
+                        .frame(width:380, height: 62, alignment: .leading)
             TextField("Enter mud weight/ppg", text: $amt)
                         .modify1()
                     
@@ -234,7 +233,9 @@ struct nextview: View {
            
                 Divider()
             let amtx = (amt as NSString).doubleValue
+                Text("--------------")
         Text("PSI/ft: \(psift(parm1: amtx, parm2: 2))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modifier(Modify1())
          Spacer()
         }
@@ -254,14 +255,18 @@ struct nextview2: View {
                 Group{
                     
                Text("Pressure Gradient - Using Mud Weight, lb/ft³:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
                 Text("Enter mud weight/lb/ft³")
+                        .frame(width:380, height: 62, alignment: .leading)
                      
         TextField("Enter mud weight/lb/ft³", text: $amt)
              
                         .modify1()
         let amtx = (amt as NSString).doubleValue
+                    Text("---------------")
         Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                 }
 
@@ -284,20 +289,24 @@ struct nextview3: View   {
                 Group{
                     
                     
-               Text("Pressure Gradient - Using specific gravity:")
+                    Text("Pressure Gradient - Using specific gravity:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                Text("Enter mud weight/specific gravity:")
-        TextField("Enter mud weight/specific gravity", text: $amt)
-        
-                    .modifier(Modify1())
-        let amtx = (amt as NSString).doubleValue
-        Text("PSI/ft: \(psift3(parm1: amtx, parm2: 2))")
+                    Text("Enter mud weight/specific gravity:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter mud weight/specific gravity", text: $amt)
+                    
+                        .modifier(Modify1())
+                    let amtx = (amt as NSString).doubleValue
+                    Text("------------")
+                    Text("PSI/ft: \(psift3(parm1: amtx, parm2: 2))")
+                        .frame(width:380, height: 62, alignment: .leading)
                 }
-               
-        Spacer()
+                
+                Spacer()
+            }
+        }
     }
-}
-}
 }
 func psift3(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -312,26 +321,31 @@ struct nextview4: View {
             ScrollView{
                 Group{
                     
-               Text("Pressure Gradient - Using drilling fluid density kg/l):")
+                    Text("Pressure Gradient - Using drilling fluid density kg/l):")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                Text("Enter Drilling fluid density kg/l")
-            TextField("Enter drilling fluid density kg/l", text: $amt)
-            //    Divider()
+                    Text("Enter Drilling fluid density kg/l")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter drilling fluid density kg/l", text: $amt)
+                    //    Divider()
                         .modify1()
-                     //   .keyboardType(.decimalPad)
-            let amtx = (amt as NSString).doubleValue
+                    //   .keyboardType(.decimalPad)
+                    let amtx = (amt as NSString).doubleValue
                     Group{
-        Text("-->Pressure gradient, bar/m: \(metricgrad(parm1: amtx, parm2: 2))")
-        Text("-->Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
+                        Text("---------------")
+                        Text("-->Pressure gradient, bar/m: \(metricgrad(parm1: amtx, parm2: 2))")
+                            .frame(width:380, height: 62, alignment: .leading)
+                        Text("-->Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
+                            .frame(width:380, height: 62, alignment: .leading)
                     }
                     .modify1()
                 }
-             
-          Spacer()
+                
+                Spacer()
+            }
+            
         }
-        
     }
-}
 }
 func metricgrad(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -349,25 +363,31 @@ struct nextview5: View {
         VStack  {
             ScrollView{
                 Group{
+                    
                     Text("Pressure Gradient - Using drilling fluid density(bar/10m):")
-                             .modify3()
-                
-                Text("Enter drilling fluid density kg/l")
-            TextField("Enter drilling fluid density kg/l", text: $amt)
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
+                    
+                    Text("Enter drilling fluid density kg/l")
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
+                    
+                    TextField("Enter drilling fluid density kg/l", text: $amt)
+                        .modify1()
                 }
-
-                .modify1()
-                Divider()
-        //   .background(.green)
-         //               .keyboardType(.decimalPad)
-            let amtx = (amt as NSString).doubleValue
-        Text("Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
-                    .modifier(Modify1())
-            Spacer()
+                
+           
+             
+                let amtx = (amt as NSString).doubleValue
+                Text("---------------")
+                Text("Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                //  Spacer()
+            }
+            
         }
-        
     }
-}
 }
 
 
@@ -378,21 +398,24 @@ struct nextview6: View {
         VStack  {
             ScrollView{
                 Text("Pressure gradient(kPa/m) using drill fluid density,kg/m³")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify3()
                 Text("Enter drilling fluid density kg/m3")
-                    
-            TextField("Enter drilling fluid density kg/m³", text: $amt)
+                    .frame(width:380, height: 62, alignment: .leading)
+                
+                TextField("Enter drilling fluid density kg/m³", text: $amt)
                     .modify1()
-        //   .background(.green)
-        //                .keyboardType(.decimalPad)
-            let amtx = (amt as NSString).doubleValue
-        Text("press grad, kPa/m \(siunits_calc(parm1: amtx, parm2: 2))")
+                
+                let amtx = (amt as NSString).doubleValue
+                Text("------------")
+                Text("press grad, kPa/m \(siunits_calc(parm1: amtx, parm2: 2))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
-         Spacer()
+                Spacer()
+            }
+            
         }
-        
     }
-}
 }
 func siunits_calc(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -413,7 +436,7 @@ struct nextview7: View {
             TextField("Enter pressure gradient, psi/ft", text: $amt)
                     .modify1()
             let amtx = (amt as NSString).doubleValue
-                Divider()
+            Text("---------------")
         Text("ppg/ mud weight: \(convtomud(parm1: amtx, parm2: 2))")
                     .modifier(Modify1())
         Text("lb/ft³/ mud weight: \(convtomud2(parm1: amtx, parm2: 2))")
@@ -447,32 +470,35 @@ struct nextview8: View {
         VStack {
             ScrollView{
                 Group{
-                    Divider()
+                    
                     Text("Convert Drill fluid dens, kg/l using pressure gradient bar/m and bar/10m")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
                     Text("Enter pressure Gradient, bar/m")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter pressure gradient, bar/m", text: $amt)
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
-           Divider()
-           }
-               let amtx = (amt as NSString).doubleValue
-           
+                    Divider()
+                }
+                let amtx = (amt as NSString).doubleValue
+                
                 
                 Group{
-                    Divider()
-        Text("Drill Dens, kg/l using bar/m:  \(drill_fluid_density(parm1: amtx, parm2: 2))")
-                
-                Divider()
-    Text("Drill fluid Dens, kg/l using bar/10m:   \(drill_fluid_density2(parm1: amtx, parm2: 2))")
-                   
+                    Text("-------------")
+                    Text("Drill Dens, kg/l using bar/m:  \(drill_fluid_density(parm1: amtx, parm2: 2))")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    
+                    Text("Drill fluid Dens, kg/l using bar/10m:   \(drill_fluid_density2(parm1: amtx, parm2: 2))")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
                 }
-                .modify1()
-                Divider()
-          Spacer()
+                
+            }
+            
         }
-        Spacer()
     }
-}
 }
 func drill_fluid_density(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -490,20 +516,24 @@ struct nextview9: View {
         VStack  {
             ScrollView{
                 Text("Convert Drilling fluid density, kg/m³ using kPa/m:")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify3()
                 Text("Enter pressure gradient,kPa/m")
-              
-            TextField("Enter pressure gradient, kPa/m", text: $amt)
+                    .frame(width:380, height: 62, alignment: .leading)
+                
+                TextField("Enter pressure gradient, kPa/m", text: $amt)
                     .modify1()
-
-            let amtx = (amt as NSString).doubleValue
-        Text("Drilling Fluid density, kg/m₃ \(drill_fluid_density4(parm1: amtx, parm2: 2))")
+                
+                let amtx = (amt as NSString).doubleValue
+                Text("---------")
+                Text("Drilling Fluid density, kg/m₃ \(drill_fluid_density4(parm1: amtx, parm2: 2))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
-          Spacer()
+                
+            }
+            
         }
-        Spacer()
     }
-}
 }
 func drill_fluid_density4(parm1: Double, parm2: Double) -> Double {
         var total: Double = 0
@@ -526,23 +556,27 @@ struct nextview10: View {
             
             ScrollView{
         Group {
-            Divider()
+           
             Text("Convert to Hydrostatic Pressure using mud wt ppg, mud wt psi, mud wt lb/ft**3,unit of depth/meters:")
+                .frame(width:380, height: 62, alignment: .leading)
                 .modify3()
             Text("Enter mud weight (ppg)")
+                .frame(width:380, height: 62, alignment: .leading)
             TextField("Enter mud weight(ppg)", text: $amt)
                 .modify1()
-             Divider()
+            
             Text("Enter true vert depth (ft)")
+                .frame(width:380, height: 62, alignment: .leading)
             TextField("Enter true vert depth (ft)", text: $amt2)
                 .modify1()
             
-            Divider()
+            
                 }
 
         
             Group {
                 Text("Enter PSI/ft")
+                    .frame(width:380, height: 62, alignment: .leading)
                  
                 TextField("Enter PSI/ft", text: $amt3)
                 .modify1()
@@ -550,15 +584,17 @@ struct nextview10: View {
                 
                 
                 Text("Enter mud wt(lb/ft 3")
+                    .frame(width:380, height: 62, alignment: .leading)
                     
                 TextField("Enter mud wt(lb/ft 3)", text: $amt4)
                .modify1()
-                Divider()
+              
                 Text("Enter true vertical depth, meters:")
+                    .frame(width:380, height: 62, alignment: .leading)
                      
                 TextField("Enter true vertical depth, meters:", text: $amt5)
                .modify2()
-                Divider()
+              
                 
                  }
                  
@@ -568,17 +604,21 @@ struct nextview10: View {
                 let amtx3 = (amt3 as NSString).doubleValue
                 let amtx4 = (amt4 as NSString).doubleValue
                 let amtx5 = (amt5 as NSString).doubleValue
-                
+          Text("--------------")
         Text("Hydrostat press/psi(using ppg):  \(hd1(parm1: amtx, parm2: amtx2))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
         Text("Hydrostat press/psi(using psi/ft:  \(hd2(parm1: amtx3, parm2: amtx2))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
         Text("Hydrostat press/psi(using mud wt lb/ft3:  \(hd3(parm1: amtx4, parm2: amtx2))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
         Text("Hydrostat press, psi, using meters as depth  \(hd4(parm1: amtx, parm2: amtx5))")
+                    .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                     
-     //     Spacer()
+   
                     }
                                                       }
          
@@ -613,25 +653,29 @@ struct nextview11: View {
                 Group{
                     Divider()
                     Text("Hydrostatic pressure using 1). Metric 2). S.I Calc:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
             Text("Enter Drilling Fluid Density,kg/l:")
+                        .frame(width:380, height: 62, alignment: .leading)
                       
             TextField("Enter Drilling Fluid Density,kg/l", text: $amt)
             .modify1()
            Divider()
                     
             Text("Enter Drilling Fluid Density,kg/m**3:")
+                        .frame(width:380, height: 62, alignment: .leading)
                          
             TextField("Enter pressure gradient, bar/10m", text: $amt2)
             .modify1()
-            Divider()
+            
                     
             Text("Enter true vertical depth:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         
             TextField("Enter true vertical depth(meters):", text: $amt3)
             .modify2()
                 }
-              //  .modify1()
+          
       
             let amtx = (amt as NSString).doubleValue
             let amtx2 = (amt2 as NSString).doubleValue
@@ -640,18 +684,18 @@ struct nextview11: View {
                 Group{
                     
                 
-                Divider()
+        Text("-------------")
         Text("Hydrostatic Pressure, bar:  \(h_pressure_bar(parm1: amtx, parm2: amtx3))")
-                
-                Divider()
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify2()
+             
     Text("Hydrostatic pressure kPa   \(h_pressure_kpa(parm1: amtx2, parm2: amtx3))")
-                   
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify2()
                 }
-                .modifier(Modify1())
-                Divider()
-          Spacer()
+            
         }
-        Spacer()
+       
     }
 }
 }
@@ -683,36 +727,42 @@ struct nextview12: View {
             
             ScrollView{
         Group {
-                Divider()
+              
             Text("Convert Drilling Pressure to Mud Weight using PSI,depth(meters+feet):")
+                .frame(width:380, height: 62, alignment: .leading)
                 .modify3()
                 Text("Enter pressure(PSI)")
+                .frame(width:380, height: 62, alignment: .leading)
                 TextField("Enter pressure(PSI)", text: $amt)
+                .frame(width:380, height: 62, alignment: .leading)
                 .modify1()
-                Divider()
+             
                 
                 Text("Enter true vert depth (ft)")
+                .frame(width:380, height: 62, alignment: .leading)
                 TextField("Enter true vert depth (ft)", text: $amt2)
                 .modify1()
                 Text("Enter true vertical depth (meters):")
+                .frame(width:380, height: 62, alignment: .leading)
                 TextField("Enter true vertical depth (meters)", text: $amt3)
                 .modify2()
-                Divider()
+           
                     }
            
         
         Group {
                 Text("Enter pressure bar:")
-                .modify1()
+                .frame(width:380, height: 62, alignment: .leading)
+                
                 TextField("Enter pressure bar:", text: $amt4)
                 .modify1()
-                Divider()
+           
                
                 Text("Enter pressure  kPa")
-                .modify1()
+                .frame(width:380, height: 62, alignment: .leading)
                 TextField("Enter pressure kPas", text: $amt5)
                 .modify2()
-                Divider()
+              
                 }
             
                 
@@ -721,17 +771,21 @@ struct nextview12: View {
                 let amtx3 = (amt3 as NSString).doubleValue
                 let amtx4 = (amt4 as NSString).doubleValue
                 let amtx5 = (amt5 as NSString).doubleValue
-                
+         Text("-----------------")
         Text("Mud Weight PPG (using feet):  \(mw1(parm1: amtx, parm2: amtx2))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
         Text("Mud Weight PPG (using meters):  \(mw2(parm1: amtx, parm2: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
         Text("Equivalent drilling fluid density, kg/l  \(eq1(parm1: amtx4, parm2: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
         Text("Equivalent drilling fluid density, kg/m**3  \(eq2(parm1: amtx5, parm2: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                     
-     //     Spacer()
+  
                     }
                                                       }
          
@@ -775,31 +829,37 @@ struct specific_gravity: View {
             
             ScrollView{
         Group {
-                Divider()
+                
             Text("Convert Specific Gravity:")
+                .frame(width:380, height: 62, alignment: .leading)
                 .modify3()
                 Text("Enter mud wt (ppg)")
+                .frame(width:380, height: 62, alignment: .leading)
                 TextField("Enter mud wt (ppg)", text: $amt)
                 .modify1()
-                Divider()
+              
                 
                 Text("Enter Pressure Gradient (psi/ft)")
+                .frame(width:380, height: 62, alignment: .leading)
                 TextField("Enter Pressure Gradient (psi/ft)", text: $amt2)
                 .modify1()
             
                 Text("Enter mud weight, lb/ft**3")
+                .frame(width:380, height: 62, alignment: .leading)
                 TextField("Enter mud weight, lb/ft**3", text: $amt3)
                 .modify1()
-            Divider()
+          
                     }
            
         
         Group {
                 Text("Enter specific gravity:")
+                .frame(width:380, height: 62, alignment: .leading)
              //   .modify1()
                 TextField("Enter specific gravity:", text: $amt4)
                 .modify2()
-                Divider()
+            Text ("------------------------")
+            
                
 
                 }
@@ -810,7 +870,7 @@ struct specific_gravity: View {
                 let amtx3 = (amt3 as NSString).doubleValue
                 let amtx4 = (amt4 as NSString).doubleValue
            //     let amtx5 = (amt5 as NSString).doubleValue
-                
+         Text("-------------")
         Text("Specific gravity using mud weight, ppg:  \(sp1(parm1: amtx, parm2: amtx2))")
                     .modify1()
         Text("Specific gravity using pressure grad, psi/ft: \(sp2(parm1: amtx2, parm2: amtx3))")
@@ -870,86 +930,94 @@ struct nextview14: View {
     @State private var amt8 = ""
     @State private var amt9 = ""
     @State private var amt10 = ""
-
-
-
+    
+    
+    
     var body: some View {
         
         VStack  {
             
             ScrollView{
-        Group {
-                Divider()
-                Text("Equivalent Circulating Density, PPG:")
-                .modify3()
-                Text("Enter Annular pressure loss, psi")
-                TextField("Enter Annular pressure loss, psi", text: $amt)
-                .modify1()
-                Divider()
+                Group {
+                    
+                    Text("Equivalent Circulating Density, PPG:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
+                    Text("Enter Annular pressure loss, psi")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter Annular pressure loss, psi", text: $amt)
+                        .modify1()
+                    
+                    Text("Enter true vertical depth, ft:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter true vertical depth, ft:", text: $amt2)
+                        .modify1()
+                    
+                    
+                    Text("Enter mud weight, ppg")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter mud weight, ppg", text: $amt3)
+                        .modify1()
+                    
+                    
+                }
                 
-                Text("Enter true vertical depth, ft:")
-                TextField("Enter true vertical depth, ft:", text: $amt2)
-                .modify1()
-
                 
-                Text("Enter mud weight, ppg")
-                TextField("Enter mud weight, ppg", text: $amt3)
-                .modify1()
-
-                Divider()
-                    }
-            
-        
-        Group {
-                Text("Enter annualar pressure loss, bar")
-                TextField("Enter annual pressure loss, bar", text: $amt4)
-                .modify1()
-
-                Divider()
-               
-               Text("Enter Total vertical depth (meters): ")
-            
-               TextField("Enter total vertical depth (meters): ", text: $amt5)
-                .modify1()
-
-               Divider()
-               Text("Enter mud weight, kg/l ")
-               TextField("Enter mud weight, kg/l ", text: $amt6)
-                .modify1()
-
-               Divider()
-          }
-        
-        Group {
-           Text("Enter Annular pressure loss, kPa: ")
-       //     .modify1()
-           TextField("Enter Annular pressure loss, kPa: ", text: $amt7)
-            .modify1()
-           Divider()
-            
-           Text("Enter mud density, kg/m: ")
-      //      .modify1()
-           TextField("Enter mud density,kg/m: ", text: $amt8)
-          .modify1()
-            Divider()
-            
+                Group {
+                    Text("Enter annualar pressure loss, bar")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter annual pressure loss, bar", text: $amt4)
+                        .modify1()
+                    
+                    
+                    Text("Enter Total vertical depth (meters): ")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    TextField("Enter total vertical depth (meters): ", text: $amt5)
+                        .modify1()
+                    
+                    
+                    Text("Enter mud weight, kg/l ")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter mud weight, kg/l ", text: $amt6)
+                        .modify1()
+                    
+                    
                 }
                 
                 Group {
-                   Text("Enter Leak off pressure, psi: ")
-               //     .modify1()
-                   TextField("Enter leak off pressure, psi: ", text: $amt9)
-                    .modify1()
-                   Divider()
+                    Text("Enter Annular pressure loss, kPa: ")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    //     .modify1()
+                    TextField("Enter Annular pressure loss, kPa: ", text: $amt7)
+                        .modify1()
                     
-                   Text("Enter Casing shoe total vertical depth, ft ")
-            //        .modify1()
-                   TextField("Enter Casing shoe total vertical depth, ft  ", text: $amt10)
-                  .modify2()
-                    Divider()
                     
-                        }
-            
+                    Text("Enter mud density, kg/m: ")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    //      .modify1()
+                    TextField("Enter mud density,kg/m: ", text: $amt8)
+                        .modify1()
+                    
+                    
+                }
+                
+                Group {
+                    Text("Enter Leak off pressure, psi: ")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    TextField("Enter leak off pressure, psi: ", text: $amt9)
+                        .modify1()
+                    
+                    
+                    Text("Enter Casing shoe total vertical depth, ft ")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    TextField("Enter Casing shoe total vertical depth, ft  ", text: $amt10)
+                        .modify2()
+                    
+                    
+                }
+                
                 
                 let amtx = (amt as NSString).doubleValue
                 let amtx2 = (amt2 as NSString).doubleValue
@@ -961,23 +1029,27 @@ struct nextview14: View {
                 let amtx8 = (amt8 as NSString).doubleValue
                 let amtx9 = (amt9 as NSString).doubleValue
                 let amtx10 = (amt10 as NSString).doubleValue
+                Text("-------------------")
+                Text("Equivalent Circulating Density, ppg:   \(ecd1(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                Text("Equivalent Drilling Density,m kg/l \(ecd2(parm1: amtx4, parm2: amtx5, parm3: amtx6))")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                Text("Equivalent circulating Density:  \(ecd3(parm1: amtx7, parm2: amtx8, parm3: amtx5))")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                Text("Maximum allowable mud weight from leak off test \(ecd4(parm1: amtx9, parm2: amtx10, parm3: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
                 
-        Text("Equivalent Circulating Density, ppg:   \(ecd1(parm1: amtx, parm2: amtx2, parm3: amtx3))")
-                    .modify1()
-        Text("Equivalent Drilling Density,m kg/l \(ecd2(parm1: amtx4, parm2: amtx5, parm3: amtx6))")
-                    .modify1()
-        Text("Equivalent circulating Density:  \(ecd3(parm1: amtx7, parm2: amtx8, parm3: amtx5))")
-                    .modify1()
-        Text("Maximum allowable mud weight from leak off test \(ecd4(parm1: amtx9, parm2: amtx10, parm3: amtx3))")
-                            .modify1()
-          
-                    
-     //     Spacer()
-                    }
-                                                      }
-         
+                
+                
+            }
+        }
         
-}
+        
+    }
 }
 func ecd1(parm1: Double, parm2: Double, parm3: Double) -> Double {
         var total: Double = 0
@@ -997,75 +1069,79 @@ func ecd4(parm1: Double, parm2: Double, parm3: Double) -> Double {
         return total}
 
 struct triplex_pumpview: View {
-//    struct nextview14: View {
-
-
+    //    struct nextview14: View {
+    
+    
     @State private var amt = ""
-        @State private var amt2 = ""
-        @State private var amt3 = ""
-        @State private var amt4 = ""
-        @State private var amt5 = ""
-        @State private var amt6 = ""
-        @State private var amt7 = ""
-        @State private var amt8 = ""
-        @State private var amt9 = ""
-        @State private var amt10 = ""
-
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    @State private var amt4 = ""
+    @State private var amt5 = ""
+    @State private var amt6 = ""
+    @State private var amt7 = ""
+    @State private var amt8 = ""
+    @State private var amt9 = ""
+    @State private var amt10 = ""
+    
     var body: some View {
         
         VStack  {
             
             ScrollView{
-        Group {
+                Group {
+                    
+                    Text("Triplex Pump:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
+                    Text("Enter liner diameter,inches:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    TextField("Enter liner diameter,in:", text: $amt)
+                        .modify1()
+                    Divider()
+                    
+                    
+                    Text("Enter stroke length, inches")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    TextField("Enter true vertical depth, ft:", text: $amt2)
+                        .modify1()
+                    
+                    Text("Enter strokes per minute:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    TextField("Enter strokes per minute:", text: $amt3)
+                        .modify2()
+                    
+                    
+                }
                 
-            Text("Triplex Pump:")
-                .modify3()
-            Divider()
-     
-            
-                Text("Enter liner diameter,inches:")
-       //         .modify1()
-                TextField("Enter liner diameter,in:", text: $amt)
-                .modify1()
-                Divider()
-              
-
-                Text("Enter stroke length, inches")
-       //         .modify1()
-                TextField("Enter true vertical depth, ft:", text: $amt2)
-                .modify1()
-
-                Text("Enter strokes per minute:")
-         //       .modify1()
-                TextField("Enter strokes per minute:", text: $amt3)
-                .modify2()
-
-                Divider()
-                    }
-            
-
+                
                 let amtx = (amt as NSString).doubleValue
                 let amtx2 = (amt2 as NSString).doubleValue
                 let amtx3 = (amt3 as NSString).doubleValue
-            
-               
-        Text("Formula 1: Pump output, bbl/stk:  \(tpf1(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                
+                Text("---------------------")
+                Text("Formula 1: Pump output, bbl/stk:  \(tpf1(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
-        let amtx4 = 0.95 * tpf1(parm1: amtx, parm2: amtx2, parm3: amtx3)
-        Text("Formula 1: Pump output, bbl/stk(95%):  \(amtx4)")
-                            .modify1()
-        Text("Formula 2: Pump output, gpm \(tpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                let amtx4 = 0.95 * tpf1(parm1: amtx, parm2: amtx2, parm3: amtx3)
+                Text("Formula 1: Pump output, bbl/stk(95%):  \(amtx4)")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
+                Text("Formula 2: Pump output, gpm \(tpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                
+                    .modify1()
+                
+                
+                //     Spacer()
+            }
+        }
         
-                            .modify1()
-          
-                    
-     //     Spacer()
-                    }
-                                                      }
-         
         
-}
+    }
 }
 func tpf1(parm1: Double, parm2: Double, parm3: Double) -> Double {
         var total: Double = 0
@@ -1078,90 +1154,104 @@ func tpf2(parm1: Double, parm2: Double, parm3: Double) -> Double {
 
 
 struct duplex_pumpview: View {
-//    struct nextview14: View {
-
-
+    
     @State private var amt = ""
-        @State private var amt2 = ""
-        @State private var amt3 = ""
-        @State private var amt4 = ""
-        @State private var amt5 = ""
-        @State private var amt6 = ""
-        @State private var amt7 = ""
-        @State private var amt8 = ""
-        @State private var amt9 = ""
-        @State private var amt10 = ""
-
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    @State private var amt4 = ""
+    @State private var amt5 = ""
+    @State private var amt6 = ""
+    @State private var amt7 = ""
+    @State private var amt8 = ""
+    @State private var amt9 = ""
+    @State private var amt10 = ""
+    
     var body: some View {
         
         VStack  {
             
             ScrollView{
-        Group {
-                
-            Text("Duplex Pump:")
-                .modify3()
-            Divider()
-            Text("Enter stroke length, inches")
-     //       .modify1()
-            TextField("Enter stroke length, inches:", text: $amt)
-            .modify1()
-            
-                Text("Enter liner diameter,inches:")
-      //          .modify1()
-                TextField("Enter liner diameter,in:", text: $amt2)
-                .modify1()
-                Divider()
-        }
                 Group {
-
-                
-
-                Text("Enter  rod diameter, inches:")
-        //        .modify1()
-                TextField("Enter  rod diameter, inches", text: $amt3)
-                .modify1()
-            
-            Text("Enter liters / minute:")
-       //     .modify1()
-            TextField("Enter liters/minute:", text: $amt6)
-            .modify1()
-
+                    
+                    Text("Duplex Pump:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
+                    
+                    Text("Enter stroke length, inches")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    //       .modify1()
+                    TextField("Enter stroke length, inches:", text: $amt)
+                        .modify1()
+                    
+                    Text("Enter liner diameter,inches:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    //          .modify1()
+                    TextField("Enter liner diameter,in:", text: $amt2)
+                        .modify1()
+                    
+                }
+                Group {
+                    
+                    
+                    
+                    Text("Enter  rod diameter, inches:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    //        .modify1()
+                    TextField("Enter  rod diameter, inches", text: $amt3)
+                        .modify1()
+                    
+                    Text("Enter liters / minute:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    TextField("Enter liters/minute:", text: $amt6)
+                        .modify1()
+                    
                     Text("Enter pump speed, spm:")
-           //         .modify1()
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
                     TextField("Enter pump speed, spm:", text: $amt7)
-                    .modify2()
-                Divider()
-                    }
-            
-
+                        .modify2()
+                    
+                }
+                
+                
                 let amtx = (amt as NSString).doubleValue
                 let amtx2 = (amt2 as NSString).doubleValue
                 let amtx3 = (amt3 as NSString).doubleValue
                 let amtx6 = (amt6 as NSString).doubleValue
                 let amtx7 = (amt7 as NSString).doubleValue
-        Text("Formula1:  0.000324 x liner diam,in**2 x stroke length, in **2")
-        Text("Formula 1: Pump output, bbl/stk:  \(dpf1(parm2: amtx2, parm1: amtx, parm3: amtx3))")
+                Text("---------------------")
+                Text("Formula1:  0.000324 x liner diam,in**2 x stroke length, in **2")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify3()
+                Text("Formula 1: Pump output, bbl/stk:  \(dpf1(parm2: amtx2, parm1: amtx, parm3: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
-        let amtx4 = 0.85 * dpf1(parm2: amtx2, parm1: amtx, parm3: amtx3)
-        Text("Formula 1: Pump output, bbl/stk(85%):  \(amtx4)")
-                            .modify1()
-        Text("Formula 2: 0.000162 x stroke length in x (2 x (liner diam)**2 - rod diam**2)")
-        Text("Formula 2: Pump output, bbl/stk \(dpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                let amtx4 = 0.85 * dpf1(parm2: amtx2, parm1: amtx, parm3: amtx3)
+                Text("Formula 1: Pump output, bbl/stk(85%):  \(amtx4)")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify2()
+                Text("Formula 2: 0.000162 x stroke length in x (2 x (liner diam)**2 - rod diam**2)")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify3()
+                Text("Formula 2: Pump output, bbl/stk \(dpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
-        let amtx5 = 0.85 * (dpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))
-         Text ("Formula 2: adjust pump output for 85% efficiancy: \(amtx5)")
+                let amtx5 = 0.85 * (dpf2(parm1: amtx, parm2: amtx2, parm3: amtx3))
+                Text ("Formula 2: adjust pump output for 85% efficiancy: \(amtx5)")
+                    .frame(width:380, height: 62, alignment: .leading)
                     .modify1()
                 
                 Text("Pump output (liters/minute): \(dpf3(parm1: amtx6, parm2: amtx7, parm3: amtx3))")
-                            .modify1()
-                    
-     //     Spacer()
-                    }
-                                                      }
-         
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                
+                
+            }
+        }
         
-}
+        
+    }
 }
 func dpf1(parm2: Double, parm1: Double, parm3: Double) -> Double {
         var total: Double = 0
@@ -1211,108 +1301,140 @@ struct annular_velocity: View {
                 Group {
                     
                     Text("Annular Velocity:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     
                         .modify3()
                     Text("Input for formula 1:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+                
                     Text("Enter pump output, bbl/min:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     
                     
                     TextField("Enter pump output, bbl/min:", text: $amt4)
                         .modify1()
                     
                     Text("Enter annual capacity, bbl/ft:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     
                     TextField("Enter annual capacity, bbl/ft:", text: $amt5)
                         .modify1()
-                    Divider()
+               
                     let amtx3 = (amt3 as NSString).doubleValue
                     let amtx4 = (amt4 as NSString).doubleValue
                     let amtx5 = (amt5 as NSString).doubleValue
+                    Text("---------------")
                     Text("Formula 1: annular velocity, ft/min:  \(av1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
+                    Text("----------------")
                 }
                 Group {
-                    Divider()
+               
                     Text("Input for formula 2:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+                
                     Text("Enter  circulation rate, gpm:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     //     .modify1()
                     TextField("Enter  circulation rate, gpm:", text: $amt)
                         .modify1()
                     
                     Text("Enter inside diameter of casing or hole size, in:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     //    .modify1()
                     TextField("Enter inside diameter of casing or hole size, in:", text: $amt2)
                         .modify1()
                 }
                 Group {
                     Text("Enter outside diameter of pipe, tubing or collars, in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     //       .modify1()
                     TextField("Enter outside diameter of pipe, tubing or collars, in.:", text: $amt3)
                         .modify1()
                     let amtx = (amt as NSString).doubleValue
                     let amtx2 = (amt2 as NSString).doubleValue
                     let amtx3 = (amt3 as NSString).doubleValue
+                    Text("---------------")
                     Text("Formula 2: AV ft/min: \(av2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
+                    Text("--------------")
                     
-                    
-                    Divider()
+          
                     Text("Input for formula 3:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+                
                     Text("Enter PO, bbl/min")
+                        .frame(width:380, height: 62, alignment: .leading)
                     //       .modify1()
                     TextField("Enter outside diameter of pipe, tubing or collars, in.:", text: $amt6)
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                 }
                 Group{
                     Text("Enter hole size, inches:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     //     .modify1()
                     TextField("Enter hole size, inches:", text: $amt7)
                         .modify1()
                     Text("Enter OD, inches:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     //    .modify1()
                     TextField("Enter OD, inches:", text: $amt8)
                         .modify1()
                     let amtx6 = (amt6 as NSString).doubleValue
                     let amtx7 = (amt7 as NSString).doubleValue
                     let amtx8 = (amt8 as NSString).doubleValue
+                    Text("-----------------")
                     Text("Formula 3: AV ft/min: \(av3(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Formula 3: AV ft/sec: \(av4(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
+                    Text("---------------")
                 }
                 Group{
-                    Divider()
+                   
                     Text("Input for Metric Calculations:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+                   
                     
                     Text("Enter pump output, liters/min:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     
                     TextField("Enter pump output, liters/min:", text: $amt9)
                         .modify1()
                     Text("Enter Annular volume, l/m:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Annular volume, l/m:", text: $amt10)
                         .modify1()
                     let amtx8 = (amt8 as NSString).doubleValue
                     let amtx9 = (amt9 as NSString).doubleValue
                     let amtx10 = (amt10 as NSString).doubleValue
+                    Text("-----------------")
                     Text("Annual velocity,m/min using metric: \(av5(parm1: amtx9, parm2: amtx10, parm3: amtx8))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annual velocity,m/sec using metric:: \(av6(parm1: amtx9, parm2: amtx10, parm3: amtx8))")
-                    Divider()
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify1()
+                    Text("-----------------")
+                  
                 }
                 
                 Group{
                     Text("Input for S.I. Calculations:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+             
                     Text("Enter pump output, m**3/min")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter pump output, m**3/min", text: $amt11)
                     
                         .modify1()
@@ -1322,56 +1444,73 @@ struct annular_velocity: View {
                     let amtx8 = (amt8 as NSString).doubleValue
                     let amtx11 = (amt11 as NSString).doubleValue
                     let amtx12 = (amt12 as NSString).doubleValue
+                    Text("-------------")
                     Text("Annual velocity,m/min using S.i. units: \(av7(parm1: amtx11, parm2: amtx12,parm3: amtx8))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
-                    Divider()
+                  Text("---------------")
                 }
                 
                 
                 Group{
                     Text("Input for Pump output, gpm, required for a desired annuar velocity, ft/min:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+                  
                     
                     Text("Enter Desired annular velocity, ft/min:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Desired annular velocity, ft/min:", text: $amt13)
                     
                         .modify1()
                     Text("Inside diameter of casing or hole size:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Inside diameter of casing or hole size, inches:", text: $amt14)
                         .modify1()
                     Text("Outside diameter of pipe, tubing or collars, inches:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Outside diameter of pipe, tubing or collars, inches:", text: $amt15)
                         .modify2()
                     let amtx13 = (amt13 as NSString).doubleValue
                     let amtx14 = (amt14 as NSString).doubleValue
                     let amtx15 = (amt15 as NSString).doubleValue
+                    Text("-----------------")
                     Text("Pump output required for a desired annular velociy, gpm \(av8(parm1: amtx13, parm2: amtx14,parm3: amtx15))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
-                    Divider()
+                    Text("--------------")
+                    
                 }
                 
                 Group{
                     Text("Strokes per minute for a given annular velocity:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+                   
                     
                     Text("Enter annular velocity, ft/min:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter annular velocity, ft/min:", text: $amt16)
                     
                         .modify1()
                     Text("Enter annular capacity, bbl/ft:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter annular capacity, bbl/ft:", text: $amt17)
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Enter pump output, bbl/stk:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter pump output, bbl/stk:", text: $amt18)
                         .modify2()
                     let amtx16 = (amt16 as NSString).doubleValue
                     let amtx17 = (amt17 as NSString).doubleValue
                     let amtx18 = (amt18 as NSString).doubleValue
+                    Text("--------------")
                     Text("Strokes per minute (SPM) for a given annular velocity: \(av9(parm1: amtx16, parm2: amtx17,parm3: amtx18))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
-                    Divider()
+                    Text("-------------")
+                   
                 }
                 
                 Group {
@@ -1395,26 +1534,29 @@ struct annular_velocity: View {
                     let amtx17 = (amt17 as NSString).doubleValue
                     
                     let amtx18 = (amt18 as NSString).doubleValue
-                    
+                    Text("*******************************")
                     Text("Summary of all Formulas:")
-                        .modify3()
+                    Text("*******************************")
+                      //  .frame(width:380, height: 62, alignment: .leading)
+                      //  .modify3()
                     Group {
-                        // Divider()
                         
-                        //        Text("Summary of all formulas:")
-                        //            .modify3()
-                        Divider()
+                      
                         
                         Text("Formula 1: annular velocity, ft/min:  \(av1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                            .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                         
                         
                         Text("Formula 2: AV ft/min: \(av2(parm1: amtx, parm2: amtx2, parm3: amtx3))")
+                            .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                         
                         Text("Formula 3: AV ft/min: \(av3(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                            .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                         Text("Formula 3: AV ft/sec: \(av4(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                            .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                         
                         Text("Annual velocity,m/min using metric: \(av5(parm1: amtx9, parm2: amtx10, parm3: amtx8))")
@@ -1422,10 +1564,13 @@ struct annular_velocity: View {
                         Text("Annual velocity,m/sec using metric:: \(av6(parm1: amtx9, parm2: amtx10, parm3: amtx8))")
                             .modify1()
                         Text("Annual velocity,m/min using S.i. units: \(av7(parm1: amtx11, parm2: amtx12,parm3: amtx8))")
+                            .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                         Text("Pump output required for a desired annular velociy, gpm \(av8(parm1: amtx13, parm2: amtx14,parm3: amtx15))")
+                            .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                         Text("Strokes per minute (SPM) for a given annular velocity: \(av9(parm1: amtx16, parm2: amtx17,parm3: amtx18))")
+                            .frame(width:380, height: 62, alignment: .leading)
                             .modify1()
                         
                     }
@@ -1511,15 +1656,17 @@ struct capacity_formulas: View {
                 Group {
                     
                     Text("Capacity Formulas:")
-                    
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
                   
-                    Divider()
+                   
                     Text("Enter Hole Size (DH), in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Hole Size (DH):", text: $amt4)
                         .modify1()
                     
                     Text("Enter Drill Pipe OD (DP), in:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Drill Pipe OD (DP), in:", text: $amt5)
                         .modify1()
                     
@@ -1527,11 +1674,15 @@ struct capacity_formulas: View {
                     let amtx3 = (amt3 as NSString).doubleValue
                     let amtx4 = (amt4 as NSString).doubleValue
                     let amtx5 = (amt5 as NSString).doubleValue
+                    Text("-----------------")
                     Text("Annular capacity, bbl/ft:  \(cf1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annular capacity, ft/bbl:  \(cf2(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annular capacity, gal/ft:  \(cf3(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     
                     
@@ -1542,23 +1693,31 @@ struct capacity_formulas: View {
                     let amtx5 = (amt5 as NSString).doubleValue
                     Divider()
                     Text("Annular capacity, ft/gal:  \(cf4(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annular capacity, ft/linft:  \(cf5(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annular capacity, lin ft/ft**3:  \(cf6(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annular capacity between casing and multiple strings of tubing:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
                     
                 }
                 Group {
-                    Divider()
+                 
                     Text("Enter Casing Hole Size (ID), in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Casing Hole Size (ID), in.:", text: $amt6)
                         .modify1()
                     Text("Enter Tubing 1. Inner diam, in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Tubing 1. Inner diam, in.:", text: $amt7)
                         .modify1()
                     Text("Enter Tubing 2. Inner diam, in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Tubing 2. Inner diam, in.:", text: $amt8)
                         .modify1()
                 }
@@ -1566,21 +1725,32 @@ struct capacity_formulas: View {
                     let amtx6 = (amt6 as NSString).doubleValue
                     let amtx7 = (amt7 as NSString).doubleValue
                     let amtx8 = (amt8 as NSString).doubleValue
+                    Text("-----------------")
                     Text("Annular capacity, bbl/ft:  \(cf7(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annular capacity, ft/bbl:  \(cf8(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
                         .modify1()
                     Text("Annular capacity, gal/ft:  \(cf9(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Annular capacity, ft/gal:  \(cf10(parm1: amtx6, parm2: amtx7, parm3: amtx8))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
+                    Text("-------------------")
                     Text("Enter Tubing 3 for next calculation please. Inner diam, in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
                     TextField("Enter Tubing 3 for next calculation please. Inner diam, in.:", text: $amt9)
                         .modify1()
                     let amtx9 = (amt9 as NSString).doubleValue
+               
                     Text("Annular capacity, ft**3/lin.ft.:  \(cf11(parm1: amtx6, parm2: amtx7, parm3: amtx8, parm4: amtx9))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
+                
                     Text("Annular capacity, lin ft/ ft**3.:  \(cf12(parm1: amtx6, parm2: amtx7, parm3: amtx8, parm4: amtx9))")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                 }
                     
@@ -1642,8 +1812,8 @@ func cf12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double 
     var total: Double = 0
     total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
     return total}
-// end code
-// BEGIN
+
+
 struct capacity_hole: View {
     
     @State private var amt = ""
@@ -1676,10 +1846,12 @@ struct capacity_hole: View {
                 Group {
                     
                     Text("Capacity tubuluars and open hole: drill pipe, drill collars, tubing and any cylindrical object")
-                    .modify3()
-                  Divider()
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
+                    Divider()
                     
                     Text("Enter hole size (DH), in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter hole size (DH), in.:", text: $amt5)
                         .modify2()
                     
@@ -1687,6 +1859,7 @@ struct capacity_hole: View {
                     let amtx3 = (amt3 as NSString).doubleValue
                     let amtx4 = (amt4 as NSString).doubleValue
                     let amtx5 = (amt5 as NSString).doubleValue
+                    Text("---------------")
                     Text("Capacity BBL/ft:  \(ch1(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
                         .modify1()
                     Text("Capacity ft/bbl: \(ch2(parm1: amtx4, parm2: amtx5, parm3: amtx3))")
@@ -1712,14 +1885,14 @@ struct capacity_hole: View {
                 }
                 
                 
-                    
-                }
                 
             }
+            
         }
-        
-        
     }
+    
+    
+}
 
 func ch1(parm1: Double, parm2: Double, parm3: Double) -> Double {
     var total: Double = 0
@@ -1807,19 +1980,23 @@ struct cuttings_drilled: View {
                 Group {
                     
                     Text("Amount of cuttings drilled per foot of hole drilled:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
                     Divider()
                     Text("Enter hole size (DH), in.:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter hole size (DH), in.:", text: $amt1)
                         .modify2()
                     Text("Enter porosity as a fraction (ie 20%= .20):")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter porosity as a fraction ", text: $amt2)
                         .modify2()
                     
-                    Divider()
+                    
                     let amtx1 = (amt1 as NSString).doubleValue
                     let amtx2 = (amt2 as NSString).doubleValue
                     let amtx3 = (amt3 as NSString).doubleValue
+                    Text("-----------------")
                     Text("Barrels of cutting drilled for one foot of \(amt1) hole drilled with \(amt2) porosity: \(cd1(parm1: amtx1, parm2: amtx2, parm3: amtx3))")
                         .modify1()
                     Text("cubic feet of cuttings drilled for one foot of \(amt1) hole drilled with \(amt2) porosity: \(cd2(parm1: amtx1, parm2: amtx2, parm3: amtx3))")
@@ -1830,30 +2007,35 @@ struct cuttings_drilled: View {
                 Group {
                     
                     Text("Total solids generated in pounds calculation:")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
-                    Divider()
+                    
                     Text("Enter capacity of hole, bbl/ft:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter capacity of hole, bbl/ft:", text: $amt4)
                         .modify2()
                     Text("Enter footage drilled in feet:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter footage drilled in feet:", text: $amt5)
                         .modify2()
                     Text("Enter specific gravity gm/cc:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter specific gravity gm/cc:", text: $amt6)
                         .modify2()
                 }
                 Group {
                     Text("Enter porosity as a fraction (ie 20%= .20):")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter porosity as a fraction ", text: $amt7)
                         .modify2()
-                    Divider()
+                    
                     
                     
                     let amtx4 = (amt4 as NSString).doubleValue
                     let amtx5 = (amt5 as NSString).doubleValue
                     let amtx6 = (amt6 as NSString).doubleValue
                     let amtx7 = (amt7 as NSString).doubleValue
-                    
+                    Text("---------------------")
                     Text("Total pounds of solids generated in drilling \(amtx5)  ft of a \(amtx4) bbl/ft with SG of cutting gm/cc = \(amtx6) and porosity of \(amtx7) is: \(cd3(parm1: amtx4, parm2: amtx5, parm3: amtx6, parm4: amtx7))")
                         .modify1()
                     
@@ -1953,18 +2135,23 @@ struct Control_Drilling: View {
                 Group {
                     
                     Text("Max drilling rate (MDR),ft/hr, when drilling large diameter holles (14 3/4in. and larger)")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
                     Divider()
                     Text("Enter mud wt out, ppg:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter mud wt out, ppg::", text: $amt1)
                         .modify2()
                     Text("Enter mud wt in, ppg:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter mud wt in, ppg::", text: $amt2)
                         .modify2()
                     Text("Enter circulation rate, gpm:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter circulationi rate, gpm:", text: $amt3)
                         .modify2()
                     Text("Enter hole size, inches:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter hole size, inches", text: $amt4)
                         .modify2()
                 }
@@ -1975,6 +2162,7 @@ struct Control_Drilling: View {
                     let amtx2 = (amt2 as NSString).doubleValue
                     let amtx3 = (amt3 as NSString).doubleValue
                     let amtx4 = (amt4 as NSString).doubleValue
+                    Text("-----------------")
                     Text("Maximum drilling Rate: \(md1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4)) with mud in: \(amt2) , mud out: \(amt1), circulation rate/gpm of \(amt3) and hole size of \(amt4)")
                         .modify1()
                 }
@@ -2024,12 +2212,15 @@ struct buoyancy_factor: View {
                 Group {
                     
                     Text("Buoyancy Factor (BF)")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
                     Divider()
                     Text("Enter mud wt, ppg:")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter mud wt, ppg:", text: $amt1)
                         .modify1()
                     Text("Enter mud wt, lb/ft**3")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter mud wt, lb/ft**3", text: $amt2)
                         .modify2()
                     
@@ -2041,9 +2232,13 @@ struct buoyancy_factor: View {
                     let amtx2 = (amt2 as NSString).doubleValue
                     let amtx3 = (amt3 as NSString).doubleValue
                     let amtx4 = (amt4 as NSString).doubleValue
+                    Text("------------------")
                     Text("Buoyancy factor is \(bf1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4)) using mud weight with ppg of \(amt1) ")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify1()
                     Text("Buoyancy factor is \(bf2(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4)) using mud weight with lb/ft**3 of \(amt2) ")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
                         .modify1()
                 }
             }
@@ -2095,26 +2290,36 @@ struct hydrostatic_pressure_pulling_pipe: View {
                 Group {
                     
                     Text("Hydrostatic pressure pulling wet and dry pipe")
+                        .frame(width:380, height: 62, alignment: .leading)
                         .modify3()
                     Divider()
+                    
+                    
                     Text("Enter number of stands:")
+                    
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter number of stands:", text: $amt1)
                         .modify1()
                     Text("Enter avg length per stand (ft):")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter avg length per stand (ft):", text: $amt2)
                         .modify1()
                     Text("Enter pipe displacement (bbl/ft):")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter pipe displacement (bbl/ft):", text: $amt3)
                         .modify1()
                 }
                 Group {
                     Text("Enter casing capacity (bbl/ft):")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter casing capacity  (bbl/ft):", text: $amt4)
                         .modify1()
                     Text("Enter mud wt (ppg):")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter mud wt (ppg):", text: $amt5)
                         .modify1()
                     Text("Enter pipe capacity(bbl/ft) for wet pipe calc:")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter pipe capacity(bbl/ft) for wet pipe calc:", text: $amt6)
                         .modify2()
                     
@@ -2129,9 +2334,12 @@ struct hydrostatic_pressure_pulling_pipe: View {
                     let amtx4 = (amt4 as NSString).doubleValue
                     let amtx5 = (amt5 as NSString).doubleValue
                     let amtx6 = (amt6 as NSString).doubleValue
+                    Text("-----------------------")
                     Text("Hydrostatic pressure (PSI) pulling dry pipe is  is \(hpp1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
+                        .frame(width:380, height: 42, alignment: .leading)
                         .modify1()
                     Text("Hydrostatic pressure (PSI) pulling wet pipe is  is \(hpp2(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
+                        .frame(width:380, height: 42, alignment: .leading)
                         .modify1()
                    
                 }
@@ -2188,20 +2396,25 @@ struct overbalance_pulling_pipe: View {
                     
                     Divider()
                     Text("Enter amount of overbalance (PSI):")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter amount of overbalance (PSI):", text: $amt1)
                         .modify1()
                     Text("Enter casing capacity (bbl/ft):")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter casing capacity (bbl/ft):", text: $amt2)
                         .modify1()
                     Text("Enter pipe displacement (bbl/ft)")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter pipe displacement (bbl/ft):", text: $amt3)
                         .modify1()
                 }
                 Group {
                     Text("Enter mud weigth (PPG):")
+                        .frame(width:380, height: 42, alignment: .leading)
                     TextField("Enter mud weigth (PPG):", text: $amt4)
                         .modify1()
                     Text("Enter Pipe capacity (bbl/ft)/ (needed for Wet Calculation):")
+                        .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter Pipe capacity (bbl/ft)", text: $amt5)
                         .modify2()
                 
@@ -2217,9 +2430,12 @@ struct overbalance_pulling_pipe: View {
                     let amtx4 = (amt4 as NSString).doubleValue
                     let amtx5 = (amt5 as NSString).doubleValue
                     let amtx6 = (amt6 as NSString).doubleValue
+                    Text("----------------")
                     Text("Feet of dry pipe that must be pulled to lose the overbalance: \(fml1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
+                        .frame(width:380, height: 42, alignment: .leading)
                         .modify1()
                     Text("Feet of wet pipe that must be pulled to lose the overbalance: \(fml2(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
+                        .frame(width:380, height: 42, alignment: .leading)
                         .modify1()
                    
                 }
@@ -2276,15 +2492,16 @@ struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
           //  .multilineTextAlignment(.leading)
+            .frame(width:380, height: 62, alignment: .leading)
      //     .frame(width:250, height: 42, alignment: .leading)
-            .font(.system(size: 12))
+            .font(.system(size: 14))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))
             .background(RoundedRectangle(cornerRadius: 14))
       //      .background(Color.green)
             .keyboardType(.decimalPad)
-            .padding(.horizontal,22)
-            .padding(.vertical,1)
+          //  .padding(.horizontal,22)
+           // .padding(.vertical,1)
             
             
         //    .onTapGesture {self.body(content: KeyboardShortcut)}
@@ -2306,6 +2523,7 @@ extension View {
 struct Modify2: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .frame(width:380, height: 62, alignment: .leading)
          //   .frame(width:250, height: 42, alignment: .leading)
             .font(.system(size: 12))
             .foregroundColor(Color.black)
@@ -2314,8 +2532,8 @@ struct Modify2: ViewModifier {
       //      .background(Color.green)
         //    .keyboardType(.decimalPad)
          //   .padding(.horizontal,20)
-            .padding(.horizontal,20)
-            .padding(.vertical,1)
+          //  .padding(.horizontal,20)
+          //  .padding(.vertical,1)
             
             
         //    .onTapGesture {self.body(content: KeyboardShortcut)}
@@ -2340,7 +2558,7 @@ struct Modify3: ViewModifier {
         content
             
             .font(.headline)
-            Divider()
+        //    Divider()
           // .bold()
             
          //   .padding(.horizontal,20)
@@ -2362,7 +2580,21 @@ extension View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        overbalance_pulling_pipe()
+      //  hydrostatic_pressure_pulling_pipe()
+     //  buoyancy_factor()
+     //   Control_Drilling()
+     //   cuttings_drilled()
+       // capacity_hole()
+      //  capacity_formulas()
+      //  annular_velocity()
+      //  duplex_pumpview()
+      //  triplex_pumpview()
+    //    specific_gravity()
+      //  nextview14()
+      //  ContentView()
+       //
+       //
       // HydrostaticPressureView()
       //  PressureGradientView()
     //nextview10()

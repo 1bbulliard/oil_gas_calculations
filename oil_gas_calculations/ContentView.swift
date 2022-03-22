@@ -40,7 +40,7 @@ struct ContentView: View {
                             .background(Color.black.cornerRadius(10))
                             .background(RoundedRectangle(cornerRadius: 14))
                     NavigationLink("Pressure Gradient--> ", destination: PressureGradientView())
-                  //          .frame(width: 255.0, height: 150.0, alignment: .center)
+                   //         .frame(width: 255.0, height: 150.0, alignment: .leading)
                             .modify1()
                         Divider()
                     NavigationLink("Hydrostatic Pressure---->", destination: HydrostaticPressureView())
@@ -79,9 +79,12 @@ struct ContentView: View {
                                 Divider()
                             NavigationLink("Hydrostatic pressure Decrease pulling dry and wet pipe-->", destination: hydrostatic_pressure_pulling_pipe())
                                 Divider()
+                            
                         }
                         .modify1()
                        Group {
+                           NavigationLink("Calculate overbalance  due to falling mud level (wet/dry)->", destination: overbalance_pulling_pipe())
+                               Divider()
                             NavigationLink("For problems or issues-->", destination: sendit())
                                 Divider()
                             
@@ -1768,8 +1771,10 @@ func ch12(parm1: Double, parm2: Double, parm3: Double, parm4: Double) -> Double 
     var total: Double = 0
     total =  183.35 / (pow(parm1,2) - (pow(parm2,2) + pow(parm3,2) + pow(parm4,2)))
     return total}
-// END
-// begin
+
+
+
+
 struct cuttings_drilled: View {
     
     @State private var amt1 = ""
@@ -2147,13 +2152,103 @@ func hpp2(parm1: Double, parm2: Double, parm3: Double, parm4: Double, parm5: Dou
     total =  (parm1 * parm2 * (parm3 + parm6)) / (parm4 - (parm3 + parm6)) * 0.052 * parm5
     return total}
 
+struct overbalance_pulling_pipe: View {
+    
+    @State private var amt1 = ""
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    @State private var amt4 = ""
+    @State private var amt5 = ""
+    @State private var amt6 = ""
+    @State private var amt7 = ""
+    @State private var amt8 = ""
+    @State private var amt9 = ""
+    @State private var amt10 = ""
+    @State private var amt11 = ""
+    @State private var amt12 = ""
+    @State private var amt13 = ""
+    @State private var amt14 = ""
+    @State private var amt15 = ""
+    @State private var amt16 = ""
+    @State private var amt17 = ""
+    @State private var amt18 = ""
+    @State private var amtx3 = ""
+    @State private var amtx4 = ""
+    @State private var amtx5 = ""
+    // @State private var amtx: Double
+    var body: some View {
+        
+        VStack  {
+            
+            ScrollView{
+                Group {
+                    
+                    Text("Loss of overbalance due to falling mud level:")
+                        .modify3()
+                    
+                    Divider()
+                    Text("Enter amount of overbalance (PSI):")
+                    TextField("Enter amount of overbalance (PSI):", text: $amt1)
+                        .modify1()
+                    Text("Enter casing capacity (bbl/ft):")
+                    TextField("Enter casing capacity (bbl/ft):", text: $amt2)
+                        .modify1()
+                    Text("Enter pipe displacement (bbl/ft)")
+                    TextField("Enter pipe displacement (bbl/ft):", text: $amt3)
+                        .modify1()
+                }
+                Group {
+                    Text("Enter mud weigth (PPG):")
+                    TextField("Enter mud weigth (PPG):", text: $amt4)
+                        .modify1()
+                    Text("Enter Pipe capacity (bbl/ft)/ (needed for Wet Calculation):")
+                    TextField("Enter Pipe capacity (bbl/ft)", text: $amt5)
+                        .modify2()
+                
+                    
+                    
+                }
+                
+                Group {
+                    Divider()
+                    let amtx1 = (amt1 as NSString).doubleValue
+                    let amtx2 = (amt2 as NSString).doubleValue
+                    let amtx3 = (amt3 as NSString).doubleValue
+                    let amtx4 = (amt4 as NSString).doubleValue
+                    let amtx5 = (amt5 as NSString).doubleValue
+                    let amtx6 = (amt6 as NSString).doubleValue
+                    Text("Feet of dry pipe that must be pulled to lose the overbalance: \(fml1(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
+                        .modify1()
+                    Text("Feet of wet pipe that must be pulled to lose the overbalance: \(fml2(parm1: amtx1, parm2: amtx2, parm3: amtx3, parm4: amtx4, parm5: amtx5, parm6: amtx6))  ")
+                        .modify1()
+                   
+                }
+            }
+            
+        }
+    }
+    
+    
+}
+
+func fml1(parm1: Double, parm2: Double, parm3: Double, parm4: Double, parm5: Double, parm6: Double) -> Double {
+    var total: Double = 0
+    total =  ((parm1 * (parm2 - parm3))) / (parm4 * 0.052 * parm3)
+    return total}
+func fml2(parm1: Double, parm2: Double, parm3: Double, parm4: Double, parm5: Double, parm6: Double) -> Double {
+    var total: Double = 0
+    total =  (parm1 * (parm2 - parm5 - parm3))  / (parm4 * 0.052 * (parm5 + parm3))
+    return total}
+
 
 
 struct sendit: View {
     @State var numbertomessage = ""
     @State var message = ""
     var body: some View {
-      Text("For problems, issues, law suits or copyright infringements, please contact Gabriel Bulliard at 3372778386")
+      Text("For problems, issues, law suits or copyright infringements,")
+            .font(.headline)
+        Text("please contact Gabriel Bulliard at 3372778386")
             .font(.headline)
         Text("Thanking you in advance for your help with this..")
             .font(.headline)
@@ -2181,7 +2276,8 @@ struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
           //  .multilineTextAlignment(.leading)
-            .font(.system(size: 18))
+     //     .frame(width:250, height: 42, alignment: .leading)
+            .font(.system(size: 12))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))
             .background(RoundedRectangle(cornerRadius: 14))
@@ -2210,8 +2306,8 @@ extension View {
 struct Modify2: ViewModifier {
     func body(content: Content) -> some View {
         content
-          //  .frame(width:250, height: 22, alignment: .leading)
-            .font(.system(size: 18))
+         //   .frame(width:250, height: 42, alignment: .leading)
+            .font(.system(size: 12))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))
             .background(RoundedRectangle(cornerRadius: 14))

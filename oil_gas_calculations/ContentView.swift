@@ -84,6 +84,7 @@ struct ContentView: View {
                         .modify1()
                        Group {
                            NavigationLink("Calculate overbalance  due to falling mud level (wet/dry)->", destination: overbalance_pulling_pipe())
+                           NavigationLink("Hydraulic horsepower calculation:", destination: Hydraulic_horsepower())
                        //        Divider()
                             NavigationLink("For problems or issues-->", destination: sendit())
                         //        Divider()
@@ -2456,6 +2457,47 @@ func fml2(parm1: Double, parm2: Double, parm3: Double, parm4: Double, parm5: Dou
     total =  (parm1 * (parm2 - parm5 - parm3))  / (parm4 * 0.052 * (parm5 + parm3))
     return total}
 
+struct Hydraulic_horsepower: View {
+   
+    @State private var amt1 = ""
+    @State private var amt2 = ""
+    @State private var amt3 = ""
+    var body: some View {
+        VStack  {
+            ScrollView{
+                Group{
+                    
+                Text("Calculate Hydraulic Horsepower:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                        .modify3()
+                       
+                Text("Enter circulating pressure(PSI): ")
+                        .frame(width:380, height: 62, alignment: .leading)
+            TextField("Enter circulating pressure(PSI):", text: $amt1)
+                        .modify1()
+                    Text("Enter Circulatig rate:(GPM): ")
+                            .frame(width:380, height: 62, alignment: .leading)
+                TextField("Enter Circulatig rate:(GPM):", text: $amt2)
+                            .modify1()
+                    
+                }
+           
+                Divider()
+            let amtx1 = (amt1 as NSString).doubleValue
+                let amtx2 = (amt2 as NSString).doubleValue
+                Text("--------------")
+        Text("Hydraulic Horsepower: \(hh1(parm1: amtx1, parm2: amtx2))")
+                    .frame(width:380, height: 62, alignment: .leading)
+                    .modifier(Modify1())
+         Spacer()
+        }
+        }
+    }
+}
+func hh1(parm1: Double, parm2: Double) -> Double {
+        var total: Double = 0
+    total = (parm1 * parm2) / 1714
+        return total}
 
 
 struct sendit: View {
@@ -2580,7 +2622,8 @@ extension View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        overbalance_pulling_pipe()
+        ContentView()
+      //  overbalance_pulling_pipe()
       //  hydrostatic_pressure_pulling_pipe()
      //  buoyancy_factor()
      //   Control_Drilling()
@@ -2592,7 +2635,7 @@ struct ContentView_Previews: PreviewProvider {
       //  triplex_pumpview()
     //    specific_gravity()
       //  nextview14()
-      //  ContentView()
+      //
        //
        //
       // HydrostaticPressureView()

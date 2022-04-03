@@ -130,8 +130,7 @@ struct PressureGradientView: View {
                             .modify1()
         NavigationLink("Pressure Gradient bar/m - Using drill fluid density kg/l", destination: nextview4())
                             .modify1()
-   //     NavigationLink("Pressure Gradient bar/10m - Using drill fluid density kg/l", //destination: nextview5())
-          //                  .modify1()
+   
         NavigationLink("S.i units calc - press grad using drill fluid dens kg/m**³", destination: nextview6())
                             .modify1()
         NavigationLink("Convert press grad to mud wt(ppg) using psi/ft", destination: nextview7())
@@ -142,7 +141,9 @@ struct PressureGradientView: View {
                             .modify1()
                             
                
-                    }                        }
+                    }
+                    
+                }
                    
 
                
@@ -224,7 +225,7 @@ struct nextview: View {
                     
                 Text("Pressure Gradient using mud wt ppg:")
                         .modify3()
-                        Spacer()
+                  
                 Text("Enter mud wt ppg: ")
                         .frame(width:380, height: 62, alignment: .leading)
             TextField("Enter mud weight/ppg", text: $amt)
@@ -238,7 +239,8 @@ struct nextview: View {
         Text("PSI/ft: \(psift(parm1: amtx, parm2: 2))")
                     .frame(width:380, height: 62, alignment: .leading)
                     .modifier(Modify1())
-         Spacer()
+      //   Spacer()
+                Spacer(minLength: 191)
         }
         }
     }
@@ -302,6 +304,7 @@ struct nextview3: View   {
                     Text("------------")
                     Text("PSI/ft: \(psift3(parm1: amtx, parm2: 2))")
                         .frame(width:380, height: 62, alignment: .leading)
+                        .modify1()
                 }
                 
                 Spacer()
@@ -329,17 +332,20 @@ struct nextview4: View {
                         .frame(width:380, height: 62, alignment: .leading)
                     TextField("Enter drilling fluid density kg/l", text: $amt)
                     //    Divider()
-                        .modify1()
+                        .modify2()
                     //   .keyboardType(.decimalPad)
                     let amtx = (amt as NSString).doubleValue
                     Group{
                         Text("---------------")
                         Text("-->Pressure gradient, bar/m: \(metricgrad(parm1: amtx, parm2: 2))")
                             .frame(width:380, height: 62, alignment: .leading)
+                            .modify1()
+
                         Text("-->Pressure gradient, bar/10m: \(metricgrad2(parm1: amtx, parm2: 2))")
                             .frame(width:380, height: 62, alignment: .leading)
+                            .modify1()
                     }
-                    .modify1()
+                   
                 }
                 
                 Spacer()
@@ -495,7 +501,7 @@ struct nextview8: View {
                         .frame(width:380, height: 62, alignment: .leading)
                     
                 }
-                
+                .modify1()
             }
             
         }
@@ -2634,7 +2640,7 @@ struct ContentView_Previews: PreviewProvider {
       //  duplex_pumpview()
       //  triplex_pumpview()
     //    specific_gravity()
-      //  nextview14()
+        nextview4()
       //
        //
        //

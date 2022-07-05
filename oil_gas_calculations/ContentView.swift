@@ -112,7 +112,7 @@ struct ContentView: View {
 struct PressureGradientView: View {
    
     var body: some View {
-      VStack {
+        VStack {
             NavigationView{
                 List{
                    
@@ -219,7 +219,7 @@ struct nextview: View {
     @State private var amt = ""
     //var amt = ""
     var body: some View {
-        VStack  {
+        VStack {
             ScrollView{
                 Group{
                     
@@ -227,7 +227,7 @@ struct nextview: View {
                         .modify3()
                   
                 Text("Enter mud wt ppg: ")
-                        .frame(width:380, height: 62, alignment: .leading)
+                        .frame(width:380, height: 42, alignment: .leading)
             TextField("Enter mud weight/ppg", text: $amt)
                         .modify1()
                     
@@ -568,12 +568,14 @@ struct nextview10: View {
                 .frame(width:380, height: 62, alignment: .leading)
                 .modify3()
             Text("Enter mud weight (ppg)")
-                .frame(width:380, height: 62, alignment: .leading)
+            //    .frame(width:380, height: 62, alignment: .leading)
+                .modify1()
             TextField("Enter mud weight(ppg)", text: $amt)
                 .modify1()
             
             Text("Enter true vert depth (ft)")
-                .frame(width:380, height: 62, alignment: .leading)
+                .modify1()
+            //    .frame(width:380, height: 62, alignment: .leading)
             TextField("Enter true vert depth (ft)", text: $amt2)
                 .modify1()
             
@@ -583,7 +585,9 @@ struct nextview10: View {
         
             Group {
                 Text("Enter PSI/ft")
-                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                
+               //     .frame(width:380, height: 62, alignment: .leading)
                  
                 TextField("Enter PSI/ft", text: $amt3)
                 .modify1()
@@ -591,13 +595,15 @@ struct nextview10: View {
                 
                 
                 Text("Enter mud wt(lb/ft 3")
-                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                 //   .frame(width:380, height: 62, alignment: .leading)
                     
                 TextField("Enter mud wt(lb/ft 3)", text: $amt4)
                .modify1()
               
                 Text("Enter true vertical depth, meters:")
-                    .frame(width:380, height: 62, alignment: .leading)
+                    .modify1()
+                 //   .frame(width:380, height: 62, alignment: .leading)
                      
                 TextField("Enter true vertical depth, meters:", text: $amt5)
                .modify2()
@@ -2540,7 +2546,8 @@ struct Modify1: ViewModifier {
     func body(content: Content) -> some View {
         content
           //  .multilineTextAlignment(.leading)
-            .frame(width:380, height: 62, alignment: .leading)
+        //    .frame(width:380, height: 62, alignment: .leading)
+            .frame(width:380, height: 16, alignment: .leading)
      //     .frame(width:250, height: 42, alignment: .leading)
             .font(.system(size: 14))
             .foregroundColor(Color.black)

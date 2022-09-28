@@ -122,30 +122,30 @@ struct PressureGradientView: View {
                       //  .padding(.all, 15.0)
                         .modify1()
                     Group {
-        NavigationLink("Pressure Gradient - Using Mud Weight, ppg ", destination: nextview())
+        NavigationLink("      -Pressure Gradient - Using Mud Weight, ppg ", destination: nextview())
                             .modify1()
-        NavigationLink("Pressure Gradient - Using Mud Weight, lb/ft³", destination: nextview2())
+        NavigationLink("      -Pressure Gradient - Using Mud Weight, lb/ft³", destination: nextview2())
                             .modify1()
-        NavigationLink("Pressure Gradient - Using Mud Weight, specific gravity", destination: nextview3())
+        NavigationLink("      -Pressure Gradient - Using Mud Weight, specific gravity", destination: nextview3())
                             .modify1()
-        NavigationLink("Pressure Gradient bar/m - Using drill fluid density kg/l", destination: nextview4())
+        NavigationLink("     -Pressure Gradient bar/m - Using drill fluid density kg/l", destination: nextview4())
                             .modify1()
    
-        NavigationLink("S.i units calc - press grad using drill fluid dens kg/m**³", destination: nextview6())
+        NavigationLink("      -S.i units calc - press grad using drill fluid dens kg/m**³", destination: nextview6())
                             .modify1()
-        NavigationLink("Convert press grad to mud wt(ppg) using psi/ft", destination: nextview7())
+        NavigationLink("      -Convert press grad to mud wt(ppg) using psi/ft", destination: nextview7())
                             .modify1()
-        NavigationLink("Convert Drill fluid dens, kg/l using pressure gradient bar/m and bar/10m", destination: nextview8())
+        NavigationLink("     -Convert Drill fluid dens, kg/l using pressure gradient bar/m and bar/10m", destination: nextview8())
                             .modify1()
-        NavigationLink("Convert Drilling fluid density, kg/m³ using kPa/m:", destination: nextview9())
+        NavigationLink("     -Convert Drilling fluid density, kg/m³ using kPa/m:", destination: nextview9())
                             .modify1()
                             
                
                     }
-                    
+                     
                 }
                    
-
+                
                
                .navigationBarHidden(true)
             }
@@ -170,9 +170,9 @@ struct HydrostaticPressureView: View {
                    Text("Hydrostatic pressure")
                             .fontWeight(.semibold)
                             .padding(.all, 15.0)
-                        NavigationLink("Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview10())
+                        NavigationLink("      Convert to Hydrostatic Pressure using 1). ppg and ft 2).psi/ft and vertical depth 3). mud wt 4).meters as depth, 5). metric 6). S.I. units calculation", destination: nextview10())
                  //       Divider()
-                        NavigationLink("Convert to Hydrostatic Pressure using 1.Metric (hydrostatic pressure, bar and 2. S.I. Calculation (hydrostatic pressure kPa)", destination: nextview11())
+                        NavigationLink("      Convert to Hydrostatic Pressure using 1.Metric (hydrostatic pressure, bar and 2. S.I. Calculation (hydrostatic pressure kPa)", destination: nextview11())
                        
             //        Spacer()
              //       Spacer()
@@ -2547,9 +2547,9 @@ struct Modify1: ViewModifier {
         content
           //  .multilineTextAlignment(.leading)
         //    .frame(width:380, height: 62, alignment: .leading)
-            .frame(width:380, height: 16, alignment: .leading)
+            .frame(width:380, height: 30, alignment: .center)
      //     .frame(width:250, height: 42, alignment: .leading)
-            .font(.system(size: 14))
+            .font(.system(size: 11))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))
             .background(RoundedRectangle(cornerRadius: 14))
@@ -2580,13 +2580,13 @@ struct Modify2: ViewModifier {
         content
             .frame(width:380, height: 62, alignment: .leading)
          //   .frame(width:250, height: 42, alignment: .leading)
-            .font(.system(size: 12))
+            .font(.system(size: 10))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))
             .background(RoundedRectangle(cornerRadius: 14))
       //      .background(Color.green)
         //    .keyboardType(.decimalPad)
-         //   .padding(.horizontal,20)
+        //    .padding(.horizontal,20)
           //  .padding(.horizontal,20)
           //  .padding(.vertical,1)
             
